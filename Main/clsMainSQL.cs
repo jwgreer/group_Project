@@ -33,7 +33,7 @@ namespace GroupProject.Main
         public string InstertItems(string sInvoiceID, string sLineItemNum, string sItemCode)
         {
             string sSQL = "INSERT INTO LineItems(InvoiceNum, LineItemNum, ItemCode) Values("+sInvoiceID+", "+sLineItemNum+", "+sItemCode+")";
-            f
+            
             return sSQL;
         }
 
