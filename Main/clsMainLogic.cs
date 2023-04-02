@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace GroupProject.Main
 {
-    class clsMainLogic
-    {
-        /// <summary>
+
+   /// <summary>
     /// Main logic class for main window
     /// This will contain the methods for connecting to the DB
     /// Contains buttons to Create, save, and edit an invoice
@@ -16,8 +15,14 @@ namespace GroupProject.Main
     /// Invoices edited or created will get added to the invoice list after being saved
     /// Datagrid will display items on invoice
     /// </summary>
+
    // class clsMainLogic
 //{
+
+    class clsMainLogic
+    {
+     
+
         // invoice class
         // item class
         // invoice class list
@@ -36,6 +41,9 @@ namespace GroupProject.Main
         //When Item window is closed, on load Main window will need to refresh combo boxes with items in it
         //cmbItem Refreshonload
 
+
    // }
+
+
     }
 }
