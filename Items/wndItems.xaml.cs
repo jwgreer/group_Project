@@ -87,8 +87,8 @@ namespace GroupProject.Items
 
         private void mainReturnBtn_Click(object sender, RoutedEventArgs e)
         {
-            this.Hide();
-            
+            this.Close();
+           // mainWindow.ShowDialog();
 
           
         }
