@@ -179,10 +179,10 @@ namespace GroupProject.Main
         /// <param name="sLineItemNum"></param>
         /// <param name="sItemCode"></param>
         /// <returns></returns>
-        public string InstertItems(string sInvoiceID, string sLineItemNum, string sItemCode)
+        public string InstertItems(int sInvoiceID, int sLineItemNum, string sItemCode)
         {
-            string sSQL = "INSERT INTO LineItems(InvoiceNum, LineItemNum, ItemCode) Values("+sInvoiceID+", "+sLineItemNum+", "+sItemCode+")";
-            
+            string sSQL = "INSERT INTO LineItems(InvoiceNum, LineItemNum, ItemCode) Values(" + sInvoiceID + ", " + sLineItemNum + ", '" + sItemCode + "')";
+
             return sSQL;
         }
 
@@ -258,9 +258,9 @@ namespace GroupProject.Main
             return "Select * From ItemDesc";
         }
 
-        public string getPrice()
+        public string getPrice(string item)
         {
-            return $"SELECT Cost FROM ItemDesc WHERE Description = 'Bridal'";
+            return $"SELECT Cost FROM ItemDesc WHERE ItemDesc = '{item}'" ;
         }
 
         public string SelectMaxInvoiceNum(string invoiceNum)
@@ -270,6 +270,24 @@ namespace GroupProject.Main
             return sSQL;
         }
 
+        public string getDate(string sInvoiceNum)
+        {
+            string sSQL = "SELECT FORMAT(InvoiceDate, 'MM/dd/yyyy') AS InvoiceDate FROM Invoices WHERE InvoiceNum = " + sInvoiceNum;
+
+            return sSQL;
+        }
+
+        public string getTotalCost(string sInvoiceNum)
+        {
+            string sSQL = "SELECT TotalCost FROM Invoices WHERE InvoiceNum = " + sInvoiceNum;
+            return sSQL;
+        }
+
+        public string getItemCode(string itemName)
+        {
+            string sSQL = $"SELECT ItemCode FROM ItemDesc WHERE ItemDesc = '{itemName}'";
+            return sSQL;
+        }
 
     }
 }
