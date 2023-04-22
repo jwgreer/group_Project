@@ -29,19 +29,25 @@ namespace GroupProject.Items
 
         // clsItemsLogic clsLogic = new clsItemsLogic();\
 
+        clsItemsLogic itemLogic = new clsItemsLogic();
+        
+        wndItems itemsWindow = new wndItems();
+
+        clsMainSQL sqlClass = new clsMainSQL();
+
         clsMainLogic mainClass = new clsMainLogic();
 
         public DataSet invoice;
 
-
         public DataTable datatable = new DataTable();
 
-       
 
-         
+
+
 
         public wndItems()
         {
+            // updateDataGrid();
             updateDataGrid();
             InitializeComponent();
         }
@@ -51,14 +57,20 @@ namespace GroupProject.Items
         // if needs to refresh item list.
         // bool HasItemsBeenChanged; // property
 
+        /* private void updateDataGrid()
+         {
+             DataTable list = mainClass.getItems();
+
+             for (int i = 0; i < list.Rows.Count; i++)
+             {
+                 gameDataGrid.Items.Add(list.Rows[i][1]);
+             }
+         }*/
+
         private void updateDataGrid()
         {
-            DataTable list = mainClass.getItems();
-
-            for (int i = 0; i < list.Rows.Count; i++)
-            {
-                gameDataGrid.Items.Add(list.Rows[i][1]);
-            }
+            var datSet = itemLogic.fillTable();
+            gameDataGrid.ItemsSource = datSet.Tables[0].DefaultView;
         }
 
         /// <summary>
