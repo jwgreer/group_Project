@@ -41,8 +41,12 @@ namespace GroupProject.Items
         {
             // Connect to the "mdb" database
             sConnectionString = @"Provider=Microsoft.Jet.OLEDB.4.0;Data source= " + Directory.GetCurrentDirectory() + "\\Invoice.mdb";
+
         }
+
+
     }
+
 
 
 }
