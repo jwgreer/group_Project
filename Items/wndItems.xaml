@@ -10,11 +10,16 @@
         <Style TargetType="Button">
             <Setter Property="Background" Value="LightBlue"/>
             <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="BorderBrush" Value="Black"></Setter>
         </Style>
         <Style TargetType="Label">
             <Setter Property="FontWeight" Value="ExtraBold"></Setter>
             <Setter Property="FontSize" Value="12"></Setter>
-            <Setter Property=""
+            
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="BorderBrush" Value="Black"></Setter>
+            <Setter Property="BorderThickness"  Value="1.5"></Setter>
         </Style>
     </Window.Resources>
     <Grid>
