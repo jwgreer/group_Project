@@ -20,7 +20,7 @@ namespace GroupProject.Items
     /// Checking to see if item is already on a Invoice
     /// 
     /// </summary>
-    class clsItemsLogic
+      class clsItemsLogic
     {
         //invoice class
         //clsInvoice class
@@ -35,7 +35,7 @@ namespace GroupProject.Items
         /// already on a invoice. isItemOnInvoice(clsItem)
         /// 
 
-        public clsMainSQL sqlClass = new clsMainSQL();
+         clsMainSQL sqlClass = new clsMainSQL();
 
 
 
@@ -47,6 +47,8 @@ namespace GroupProject.Items
             var dataset = clsData.ExecuteSQLStatement(query, ref count);
             return dataset.Tables[0];
         }
+
+        
 
 
         /// <summary>

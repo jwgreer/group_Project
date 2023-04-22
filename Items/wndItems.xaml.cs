@@ -27,17 +27,22 @@ namespace GroupProject.Items
     {
         //wndMain mainWindow = new wndMain();
 
+        // clsItemsLogic clsLogic = new clsItemsLogic();\
+
+        clsMainLogic mainClass = new clsMainLogic();
+
         public DataSet invoice;
+
 
         public DataTable datatable = new DataTable();
 
-        
+       
 
-       // public clsMainSQL sqlClass = new clsMainSQL();
+         
 
         public wndItems()
         {
-
+            updateDataGrid();
             InitializeComponent();
         }
 
@@ -46,6 +51,15 @@ namespace GroupProject.Items
         // if needs to refresh item list.
         // bool HasItemsBeenChanged; // property
 
+        private void updateDataGrid()
+        {
+            DataTable list = mainClass.getItems();
+
+            for (int i = 0; i < list.Rows.Count; i++)
+            {
+                gameDataGrid.Items.Add(list.Rows[i][1]);
+            }
+        }
 
         /// <summary>
         /// method for edit item 
@@ -54,8 +68,8 @@ namespace GroupProject.Items
         /// <param name="e"></param>
         private void editItemBtn_Click(object sender, RoutedEventArgs e)
         {
-
-        }
+           // clsItemsLogic.getItems();                   
+        }       
 
         /// <summary>
         /// method for adding items
