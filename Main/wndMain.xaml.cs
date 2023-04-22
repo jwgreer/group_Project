@@ -22,7 +22,7 @@ namespace GroupProject.Main
     /// </summary>
     public partial class wndMain : Window
     {
-        
+        //test
        // wndSearch seachWindow = new wndSearch();
 
         wndItems itemsWindow = new wndItems();
