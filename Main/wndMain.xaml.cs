@@ -42,6 +42,7 @@ namespace GroupProject.Main
             InitializeComponent();
             
             updatecb();
+            updateDataGrid();
 
             invoice = new DataSet();
         }
@@ -54,7 +55,11 @@ namespace GroupProject.Main
 
 
 
-
+        private void updateDataGrid()
+        {
+            var datSet = mainClass.fillTable();
+            dataGrid.ItemsSource = datSet.Tables[0].DefaultView;
+        }
 
 
 
@@ -87,6 +92,20 @@ namespace GroupProject.Main
             //this.Close();
             itemsWindow.ShowDialog();
             
+        }
+
+        private void cmbItems_Selection(object sender, SelectionChangedEventArgs e)
+        {
+            if (cmbItems.SelectedItem != null)
+            {
+                string selectedItme = cmbItems.SelectedItem.ToString();
+                getPrice(selectedItme);
+            }
+        }
+
+        private void getPrice(string item)
+        {
+            costTextBox.Text = mainClass.getPrice(item);
         }
     }
 }

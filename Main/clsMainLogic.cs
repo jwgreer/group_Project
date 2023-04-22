@@ -36,6 +36,19 @@ namespace GroupProject.Main
             return dataset.Tables[0];
         }
 
+        public string getPrice(string item)
+        {
+            var query = sqlClass.getPrice(item);
+            return sqlClass.ExecuteScalarSQL(query);
+        }
+
+        public DataSet fillTable()
+        {
+            var count = 0;
+            var query = sqlClass.getItems();
+            var dataset = sqlClass.ExecuteSQLStatement(query, ref count);
+            return dataset;
+        }
 
         // invoice class
         // item class

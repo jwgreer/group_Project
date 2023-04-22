@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GroupProject.Main"
         mc:Ignorable="d"
-        Title="wndMain" Height="450" Width="800">
+        Title="wndMain" Height="450" Width="800" SizeToContent="Height" WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <Style TargetType="Button">
             <Setter Property="Background" Value="LightBlue"/>
@@ -39,9 +39,10 @@
         <Label x:Name="lblItems" Content="Items" HorizontalAlignment="Left" Margin="79,280,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblCost" Content="Cost:" HorizontalAlignment="Left" Margin="76,335,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblItems_On_Invoice" Content="Items on Invoice" HorizontalAlignment="Left" Margin="375,199,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="cmbItems" HorizontalAlignment="Left" Margin="139,287,0,0" VerticalAlignment="Top" Width="120"/>
-        <DataGrid d:ItemsSource="{d:SampleData ItemCount=5}" Margin="375,235,0,0"/>
+        <ComboBox x:Name="cmbItems" HorizontalAlignment="Left" Margin="139,287,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cmbItems_Selection"/>
+        <DataGrid x:Name="dataGrid" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="375,235,0,0"/>
         <Button x:Name="btnCreate_Invoice" Content="Create Invoice" HorizontalAlignment="Left" Margin="226,18,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="costTextBox" HorizontalAlignment="Left" Margin="128,339,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
 
     </Grid>
 </Window>
