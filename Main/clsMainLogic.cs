@@ -21,7 +21,9 @@ namespace GroupProject.Main
 
     class clsMainLogic
     {
-     
+
+        int x = 2;
+
 
         // invoice class
         // item class
