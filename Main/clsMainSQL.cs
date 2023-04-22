@@ -233,9 +233,9 @@ namespace GroupProject.Main
         /// </summary>
         /// <param name="sLineItems"></param>
         /// <returns></returns>
-        public string SelectLineItems(string sLineItems)
+        public string SelectLineItems(string invoiceNum) //public string SelectLineItems(string sLineItems) i am running tests
         {
-            string sSQL = "SELECT LineItems.ItemCode, ItemDesc.ItemDesc, ItemDesc.Cost FROM LineItems, ItemDesc Where LineItems.ItemCode = ItemDesc.ItemCode And LineItems.InvoiceNum =" + sLineItems;
+            string sSQL = "SELECT LineItems.ItemCode, ItemDesc.ItemDesc, ItemDesc.Cost FROM LineItems, ItemDesc Where LineItems.ItemCode = ItemDesc.ItemCode And LineItems.InvoiceNum =" + invoiceNum;
 
             return sSQL;
         }
@@ -255,12 +255,21 @@ namespace GroupProject.Main
 
         public string getItems()
         {
-            return "Select * From ItemDesc";
+            return "Select * From LineItems";
         }
 
         public string getPrice(string item)
         {
             return $"SELECT * FROM ItemDesc WHERE Description = '{item}'";
         }
+
+        public string SelectMaxInvoiceNum(string invoiceNum)
+        {
+            string sSQL = "SELECT MAX(InvoiceNum) FROM Invoices";
+
+            return sSQL;
+        }
+
+
     }
 }

@@ -42,12 +42,18 @@ namespace GroupProject.Main
             return sqlClass.ExecuteScalarSQL(query);
         }
 
-        public DataSet fillTable()
+        public DataSet fillTable(string invoiceNum)
         {
             var count = 0;
-            var query = sqlClass.getItems();
+            var query = sqlClass.SelectLineItems(invoiceNum);
             var dataset = sqlClass.ExecuteSQLStatement(query, ref count);
             return dataset;
+        }
+
+        public string getLatestInvoice(string invoiceNum)
+        {
+            var query = sqlClass.SelectMaxInvoiceNum(invoiceNum);
+            return sqlClass.ExecuteScalarSQL(query);
         }
 
         // invoice class
