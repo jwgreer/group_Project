@@ -57,14 +57,19 @@ namespace GroupProject.Main
             return dataset.Tables[0];
         }
 
-        /*
-        public string getPrice()
+        
+        public string getPrice(string item)
         {
-            int count = 0;
-            var query = sqlClass.getPrice();
-            return sqlClass.ExecuteSQLStatement(query, ref count);
+            var query = sqlClass.getPrice(item);
+            return sqlClass.ExecuteScalarSQL(query);
         }
-        */
+
+        public string getCode(string itemName)
+        {
+            var query = sqlClass.getItemCode(itemName);
+            return sqlClass.ExecuteScalarSQL(query);
+        }
+        
         public DataSet fillTable(string invoiceNum)
         {
             var count = 0;
@@ -77,6 +82,25 @@ namespace GroupProject.Main
         {
             var query = sqlClass.SelectMaxInvoiceNum(invoiceNum);
             return sqlClass.ExecuteScalarSQL(query);
+        }
+
+        public string getInvoiceDate(string invoiceNum)
+        {
+            var query = sqlClass.getDate(invoiceNum);
+            return sqlClass.ExecuteScalarSQL(query);
+        }
+
+        public string getInvoiceCost(string invoiceNum)
+        {
+            var query = sqlClass.getTotalCost(invoiceNum);
+            return sqlClass.ExecuteScalarSQL(query);
+        }
+
+        public string insertItem(int invoiceNum, int lineItemNum, string itemCode)
+        {
+            var query = sqlClass.InstertItems(invoiceNum, lineItemNum, itemCode);
+            var result = sqlClass.ExecuteNonQuery(query);
+            return result.ToString();
         }
 
         // invoice class
