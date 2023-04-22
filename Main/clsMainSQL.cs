@@ -24,7 +24,7 @@ namespace GroupProject.Main
         /// </summary>
 		public clsMainSQL()
         {
-            sConnectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data source= " + Directory.GetCurrentDirectory() + "\\Invoice.mdb";
+                sConnectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data source= " + Directory.GetCurrentDirectory() + "\\Invoice.mdb";          
         }
 
         /// <summary>
@@ -255,12 +255,12 @@ namespace GroupProject.Main
 
         public string getItems()
         {
-            return "Select * From LineItems";
+            return "Select * From ItemDesc";
         }
 
-        public string getPrice(string item)
+        public string getPrice()
         {
-            return $"SELECT * FROM ItemDesc WHERE Description = '{item}'";
+            return $"SELECT Cost FROM ItemDesc WHERE Description = 'Bridal'";
         }
 
         public string SelectMaxInvoiceNum(string invoiceNum)
