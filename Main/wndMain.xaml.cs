@@ -41,7 +41,7 @@ namespace GroupProject.Main
         {
             InitializeComponent();
             
-            //updatecb();
+            updatecb();
 
             invoice = new DataSet();
         }
@@ -57,17 +57,18 @@ namespace GroupProject.Main
 
 
 
-        /*
+
         private void updatecb()
         {
-            DataSet list = mainClass.getItems();
+            DataTable list = mainClass.getItems();
 
-            for (int i =0; i < list.Tables[0].Rows.Count; i++)
+            for (int i = 0; i < list.Rows.Count; i++)
             {
-                cmbItems.Items.Add(list.Tables[0].Rows[i][1]);
+                cmbItems.Items.Add(list.Rows[i][1]);
             }
         }
-        */
+
+
 
         private void getCost(string item)
         {
