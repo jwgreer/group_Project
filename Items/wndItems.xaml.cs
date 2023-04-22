@@ -24,7 +24,7 @@ namespace GroupProject.Items
     /// </summary>
     public partial class wndItems : Window
     {
-        wndMain mainWindow = new wndMain();
+        //wndMain mainWindow = new wndMain();
 
         public DataSet invoice;
 
@@ -88,7 +88,7 @@ namespace GroupProject.Items
         private void mainReturnBtn_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
-            mainWindow.ShowDialog();
+           // mainWindow.ShowDialog();
 
           
         }
