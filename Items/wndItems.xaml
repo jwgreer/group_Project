@@ -11,11 +11,15 @@
             <Setter Property="Background" Value="LightBlue"/>
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="BorderBrush" Value="Black"></Setter>
+            <Setter Property="Cursor" Value="Hand"></Setter>
         </Style>
         <Style TargetType="Label">
             <Setter Property="FontWeight" Value="ExtraBold"></Setter>
             <Setter Property="FontSize" Value="12"></Setter>
-            
+
+        </Style>
+        <Style TargetType="Grid">
+            <Setter Property="Background" Value="Beige"></Setter>
         </Style>
         <Style TargetType="TextBox">
             <Setter Property="BorderBrush" Value="Black"></Setter>
