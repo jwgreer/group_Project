@@ -41,7 +41,9 @@ namespace GroupProject.Items
 
         public DataTable datatable = new DataTable();
 
-
+        public string rCode;
+        public string rItemDesc;
+        public string rCost;
 
 
 
@@ -88,8 +90,10 @@ namespace GroupProject.Items
         /// <param name="e"></param>
         private void editItemBtn_Click(object sender, RoutedEventArgs e)
         {
-            // clsItemsLogic.getItems();
-            updateDataGrid();
+           // DataRowView drv = gameDataGrid.CurrentRow.DataBoundItem as DataRowView;
+            //DataRow[] rowsToUpdate = new DataRow[] { drv.Row };
+            //gameDataGrid.Rows[0].Selected = true;
+            
         }       
 
         /// <summary>
@@ -99,9 +103,18 @@ namespace GroupProject.Items
         /// <param name="e"></param>
         private void addItemBtn_Click(object sender, RoutedEventArgs e)
         {
-            
-
+            // gameDataGrid.Rows.Add()
+            if (costTextBox != null && descTextBox !=null && codeTextBox != null)
+            {
+                List<string> game = new List<string>();
+               // DataGrid.Items.Add
+                rCode = codeTextBox.Text;
+                rCost = costTextBox.Text;
+                rItemDesc = descTextBox.Text;
+                //game.Add(rCode, )
+            }
         }
+
 
         /// <summary>
         /// method for deleting items

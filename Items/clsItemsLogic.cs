@@ -26,6 +26,7 @@ namespace GroupProject.Items
         //clsInvoice class
         //list<items>
 
+        
 
         /// create a method that Get all items then return List<clsItem>
         /// create a method for adding an Item(clsItem)- from the folder common
@@ -36,7 +37,7 @@ namespace GroupProject.Items
         /// 
 
          clsMainSQL sqlClass = new clsMainSQL();
-
+         clsItemsSQL sqlItemClass = new clsItemsSQL();
 
       
 
@@ -64,7 +65,7 @@ namespace GroupProject.Items
         public DataSet fillTable()
         {
             var count = 0;
-            var query = sqlClass.getItems();
+            var query = sqlItemClass.getItemsDesc();
             var dataset = sqlClass.ExecuteSQLStatement(query, ref count);
             return dataset;
         }

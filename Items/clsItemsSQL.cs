@@ -63,6 +63,11 @@ namespace GroupProject.Items
             return sSQL;
         }
 
+        public string getItemsDesc()
+        {
+            return "Select * From ItemDesc";
+        }
+
         /// <summary>
         /// method to delete the item where the Item Code matches
         /// </summary>

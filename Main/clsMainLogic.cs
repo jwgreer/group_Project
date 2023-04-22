@@ -26,6 +26,27 @@ namespace GroupProject.Main
         public clsMainSQL sqlClass = new clsMainSQL();
 
 
+        private string sCode;
+
+        private string sItemDesc;
+
+        private int sCost;
+        
+        /// <summary>
+        /// Getter and setter for code
+        /// </summary>
+        public string Code { get { return sCode; } set { sCode = value; } }
+
+
+        /// <summary>
+        /// getter and Setter for Item Desc
+        /// </summary>
+        public string ItemDesc { get { return sItemDesc; } set { sItemDesc = value; } }
+
+        /// <summary>
+        /// getter and setter for Cost
+        /// </summary>
+        public int Cost { get { return sCost; } set { sCost = value; } }
 
         public DataTable getItems()
         {
