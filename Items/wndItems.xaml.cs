@@ -24,7 +24,7 @@ namespace GroupProject.Items
     /// </summary>
     public partial class wndItems : Window
     {
-        
+        //wndMain mainWindow = new wndMain();
 
         public DataSet invoice;
 
