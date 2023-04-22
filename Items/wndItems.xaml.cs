@@ -31,7 +31,7 @@ namespace GroupProject.Items
 
         clsItemsLogic itemLogic = new clsItemsLogic();
         
-        wndItems itemsWindow = new wndItems();
+        //wndItems itemsWindow = new wndItems();
 
         clsMainSQL sqlClass = new clsMainSQL();
 
@@ -48,8 +48,9 @@ namespace GroupProject.Items
         public wndItems()
         {
             // updateDataGrid();
-            updateDataGrid();
+            
             InitializeComponent();
+            updateDataGrid();
         }
 
         // the main window needs to be looking into this to know if anything has changed.
@@ -69,8 +70,15 @@ namespace GroupProject.Items
 
         private void updateDataGrid()
         {
-            var datSet = itemLogic.fillTable();
-            gameDataGrid.ItemsSource = datSet.Tables[0].DefaultView;
+            try
+            {
+                if (gameDataGrid != null)
+                {
+                    var datSet = itemLogic.fillTable();
+                    gameDataGrid.ItemsSource = datSet.Tables[0].DefaultView;
+                }
+            }
+            catch (Exception ex) { System.Diagnostics.Debug.WriteLine(ex.Message); }
         }
 
         /// <summary>
@@ -80,7 +88,8 @@ namespace GroupProject.Items
         /// <param name="e"></param>
         private void editItemBtn_Click(object sender, RoutedEventArgs e)
         {
-           // clsItemsLogic.getItems();                   
+            // clsItemsLogic.getItems();
+            updateDataGrid();
         }       
 
         /// <summary>

@@ -24,7 +24,7 @@ namespace GroupProject.Main
         /// </summary>
 		public clsMainSQL()
         {
-            sConnectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data source= " + Directory.GetCurrentDirectory() + "\\Invoice.mdb";
+                sConnectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data source= " + Directory.GetCurrentDirectory() + "\\Invoice.mdb";          
         }
 
         /// <summary>
