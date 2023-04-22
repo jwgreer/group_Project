@@ -42,7 +42,7 @@ namespace GroupProject.Main
             InitializeComponent();
             
             updatecb();
-            updateDataGrid();
+            loadLatestInvoiceNum();
 
             invoice = new DataSet();
         }
@@ -57,7 +57,7 @@ namespace GroupProject.Main
 
         private void updateDataGrid()
         {
-            var datSet = mainClass.fillTable();
+            var datSet = mainClass.fillTable(invoiceNumber.Content.ToString());
             dataGrid.ItemsSource = datSet.Tables[0].DefaultView;
         }
 
@@ -107,5 +107,17 @@ namespace GroupProject.Main
         {
             costTextBox.Text = mainClass.getPrice(item);
         }
+
+        private void btnEdit_Invoice_Click(object sender, RoutedEventArgs e)
+        {
+            updateDataGrid();
+        }
+
+        private void loadLatestInvoiceNum()
+        {
+            string latestInvoiceNum = mainClass.getLatestInvoice("");
+            invoiceNumber.Content = latestInvoiceNum;
+        }
+
     }
 }
