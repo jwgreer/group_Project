@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,8 +23,16 @@ namespace GroupProject.Main
     class clsMainLogic
     {
 
-        int x = 2;
+        public clsMainSQL sqlClass = new clsMainSQL();
 
+        /*
+        public DataSet getItems()
+        {
+            var iRetVal = 0;
+            var query = sqlClass.getItems();
+            return sqlClass.ExecuteSQLStatement(query, ref iRetVal);
+        }
+        */
 
         // invoice class
         // item class

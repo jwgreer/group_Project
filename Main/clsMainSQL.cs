@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.OleDb;
 using System.Data;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Data.OleDb;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,6 +12,8 @@ namespace GroupProject.Main
 {
     class clsMainSQL
     {
+        /*
+         
         /// <summary>
         /// Connection string to the database.
         /// </summary>
@@ -116,6 +118,7 @@ namespace GroupProject.Main
                 throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + "." + MethodInfo.GetCurrentMethod().Name + " -> " + ex.Message);
             }
         }
+        
 
         /// <summary>
         /// This method takes an SQL statement that is a non query and executes it.
@@ -151,6 +154,7 @@ namespace GroupProject.Main
             }
         }
 
+        */
 
 
         //- UPDATE Invoices SET TotalCost = 1200 WHERE InvoiceNum = 123
@@ -247,6 +251,11 @@ namespace GroupProject.Main
             string sSQL = "DELETE * FROM LineItems WHERE InvoiceNum =" + sInvoiceNum;
 
             return sSQL;
+        }
+
+        public string getItems()
+        {
+            return "Select * From Items";
         }
     }
 }
