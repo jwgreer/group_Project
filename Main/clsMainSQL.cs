@@ -181,7 +181,7 @@ namespace GroupProject.Main
         /// <returns></returns>
         public string InstertItems(int sInvoiceID, int sLineItemNum, string sItemCode)
         {
-            string sSQL = "INSERT INTO LineItems(InvoiceNum, LineItemNum, ItemCode) Values(" + sInvoiceID + ", " + sLineItemNum + ", '" + sItemCode + "')";
+            string sSQL = "INSERT INTO LineItems(InvoiceNum, LineItemNum, ItemCode) Values('" + sInvoiceID + "', '" + sLineItemNum + "', '" + sItemCode + "')";
 
             return sSQL;
         }

@@ -117,6 +117,7 @@ namespace GroupProject.Items
                 rItemDesc = descTextBox.Text;
 
                 insertItem();
+                updateDataGrid();
                 //game.Add(rCode, )
             }
             else
@@ -127,8 +128,9 @@ namespace GroupProject.Items
         private void insertItem()
         {
             var result = itemLogic.insertGame(rCode,rItemDesc, rCost);
-            MessageBox.Show(result);
+            
         }
+      
 
         /// <summary>
         /// method for deleting items
@@ -137,9 +139,15 @@ namespace GroupProject.Items
         /// <param name="e"></param>
         private void deleteItemBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            var selectedItem = gameDataGrid.SelectedItem;
+            if (selectedItem != null)
+            {
+                gameDataGrid.Items.Remove(selectedItem);
+                updateDataGrid();
+            }
+          
         }
-
+      
 
         /// <summary>
         /// method for saving items
