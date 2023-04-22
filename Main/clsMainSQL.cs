@@ -12,7 +12,7 @@ namespace GroupProject.Main
 {
     class clsMainSQL
     {
-        /*
+        
          
         /// <summary>
         /// Connection string to the database.
@@ -24,7 +24,7 @@ namespace GroupProject.Main
         /// </summary>
 		public clsMainSQL()
         {
-            sConnectionString = @"Provider=Microsoft.Jet.OLEDB.4.0;Data source= " + Directory.GetCurrentDirectory() + "\\ReservationSystem.mdb";
+            sConnectionString = @"Provider=Microsoft.Jet.OLEDB.4.0;Data source= " + Directory.GetCurrentDirectory() + "\\Invoic.mdb";
         }
 
         /// <summary>
@@ -154,7 +154,7 @@ namespace GroupProject.Main
             }
         }
 
-        */
+        
 
 
         //- UPDATE Invoices SET TotalCost = 1200 WHERE InvoiceNum = 123
