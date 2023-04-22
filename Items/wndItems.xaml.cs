@@ -5,6 +5,7 @@ using GroupProject.Main;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Common;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,7 +31,9 @@ namespace GroupProject.Items
 
         public DataTable datatable = new DataTable();
 
+        
 
+       // public clsMainSQL sqlClass = new clsMainSQL();
 
         public wndItems()
         {
@@ -61,6 +64,7 @@ namespace GroupProject.Items
         /// <param name="e"></param>
         private void addItemBtn_Click(object sender, RoutedEventArgs e)
         {
+            
 
         }
 
@@ -82,6 +86,7 @@ namespace GroupProject.Items
         /// <param name="e"></param>
         private void saveItemBtn_Click(object sender, RoutedEventArgs e)
         {
+          
 
         }
 
@@ -91,6 +96,14 @@ namespace GroupProject.Items
            // mainWindow.ShowDialog();
 
           
+        }
+
+        
+
+
+        private void mainform_Load(object sender, RoutedEventArgs e)
+        {
+
         }
         private void HandleError(string sClass, string sMethod, string sMessage)
         {

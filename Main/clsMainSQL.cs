@@ -24,7 +24,7 @@ namespace GroupProject.Main
         /// </summary>
 		public clsMainSQL()
         {
-            sConnectionString = @"Provider=Microsoft.Jet.OLEDB.4.0;Data source= " + Directory.GetCurrentDirectory() + "\\Invoice.mdb";
+            sConnectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data source= " + Directory.GetCurrentDirectory() + "\\Invoice.mdb";
         }
 
         /// <summary>
@@ -255,7 +255,7 @@ namespace GroupProject.Main
 
         public string getItems()
         {
-            return "Select * From Items";
+            return "Select * From ItemDesc";
         }
     }
 }

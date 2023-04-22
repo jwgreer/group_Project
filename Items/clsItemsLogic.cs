@@ -1,5 +1,7 @@
-﻿using System;
+﻿using GroupProject.Main;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -32,6 +34,20 @@ namespace GroupProject.Items
         /// create a method  that needs to have a check that item isnt
         /// already on a invoice. isItemOnInvoice(clsItem)
         /// 
+
+        public clsMainSQL sqlClass = new clsMainSQL();
+
+
+
+        public DataTable getItems()
+        {
+            int count = 0;
+            clsMainSQL clsData = new clsMainSQL();
+            var query = sqlClass.getItems();
+            var dataset = clsData.ExecuteSQLStatement(query, ref count);
+            return dataset.Tables[0];
+        }
+
 
         /// <summary>
         /// Connection string to the DB
