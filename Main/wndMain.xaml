@@ -47,6 +47,9 @@
         <Label x:Name="invoiceDate" Content="Label" HorizontalAlignment="Left" Margin="158,84,0,0" VerticalAlignment="Top"/>
         <Label x:Name="totalCost" Content="Label" HorizontalAlignment="Left" Margin="158,186,0,0" VerticalAlignment="Top"/>
         <Label x:Name="itemCodeLabel" Content="Label" HorizontalAlignment="Left" Margin="507,133,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="test1" Content="Label" HorizontalAlignment="Left" Margin="588,38,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="test2" Content="Label" HorizontalAlignment="Left" Margin="609,84,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="test3" Content="Label" HorizontalAlignment="Left" Margin="630,133,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>
