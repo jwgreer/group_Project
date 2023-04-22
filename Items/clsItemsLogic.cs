@@ -38,8 +38,8 @@ namespace GroupProject.Items
 
          clsMainSQL sqlClass = new clsMainSQL();
          clsItemsSQL sqlItemClass = new clsItemsSQL();
+         DataTable _dataTable = new DataTable();
 
-      
 
         /// <summary>
         /// Connection string to the DB
@@ -69,7 +69,11 @@ namespace GroupProject.Items
             var dataset = sqlClass.ExecuteSQLStatement(query, ref count);
             return dataset;
         }
-
+       // public DataTable DataTable
+        //{
+        //    get { return _dataTable; }
+        //    set { SetProperty(ref _dataTable, value); }
+       // }
 
     }
 

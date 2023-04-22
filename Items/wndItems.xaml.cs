@@ -4,6 +4,7 @@
 using GroupProject.Main;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data;
 using System.Data.Common;
 using System.Linq;
@@ -106,12 +107,20 @@ namespace GroupProject.Items
             // gameDataGrid.Rows.Add()
             if (costTextBox != null && descTextBox !=null && codeTextBox != null)
             {
-                List<string> game = new List<string>();
-               // DataGrid.Items.Add
+                
+                List<int> newRow = new List<int>();
+                
+                // List<string> game = new List<string>();
+                // DataGrid.Items.Add
                 rCode = codeTextBox.Text;
                 rCost = costTextBox.Text;
                 rItemDesc = descTextBox.Text;
+                datatable.Rows.Add(rCode, rItemDesc, rCost);
                 //game.Add(rCode, )
+            }
+            else
+            {
+                MessageBox.Show("Please fill in the data to enter.");
             }
         }
 
