@@ -257,5 +257,10 @@ namespace GroupProject.Main
         {
             return "Select * From ItemDesc";
         }
+
+        public string getPrice(string item)
+        {
+            return $"SELECT * FROM ItemDesc WHERE Description = '{item}'";
+        }
     }
 }
