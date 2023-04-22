@@ -1,8 +1,10 @@
 
 
 
-﻿using System;
+using GroupProject.Main;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,8 +24,17 @@ namespace GroupProject.Items
     /// </summary>
     public partial class wndItems : Window
     {
+        wndMain mainWindow = new wndMain();
+
+        public DataSet invoice;
+
+        public DataTable datatable = new DataTable();
+
+
+
         public wndItems()
         {
+
             InitializeComponent();
         }
 
@@ -72,6 +83,14 @@ namespace GroupProject.Items
         private void saveItemBtn_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void mainReturnBtn_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            mainWindow.ShowDialog();
+
+          
         }
     }
 }
