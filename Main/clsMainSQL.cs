@@ -255,12 +255,12 @@ namespace GroupProject.Main
 
         public string getItems()
         {
-            return "Select * From LineItems";
+            return "Select * From ItemDesc";
         }
 
-        public string getPrice(string item)
+        public string getPrice()
         {
-            return $"SELECT * FROM ItemDesc WHERE Description = '{item}'";
+            return $"SELECT Cost FROM ItemDesc WHERE Description = 'Bridal'";
         }
 
         public string SelectMaxInvoiceNum(string invoiceNum)

@@ -98,15 +98,17 @@ namespace GroupProject.Main
         {
             if (cmbItems.SelectedItem != null)
             {
-                string selectedItme = cmbItems.SelectedItem.ToString();
-                getPrice(selectedItme);
+                var selectedItem = cmbItems.SelectedItem.ToString();
+                
             }
         }
 
-        private void getPrice(string item)
+        /*
+        private void getPrice()
         {
-            costTextBox.Text = mainClass.getPrice(item);
+            costTextBox.Text = mainClass.getPrice();
         }
+        */
 
         private void btnEdit_Invoice_Click(object sender, RoutedEventArgs e)
         {
