@@ -25,14 +25,17 @@ namespace GroupProject.Main
 
         public clsMainSQL sqlClass = new clsMainSQL();
 
-        /*
-        public DataSet getItems()
+
+
+        public DataTable getItems()
         {
-            var iRetVal = 0;
+            int count = 0;
+            clsMainSQL clsData = new clsMainSQL();
             var query = sqlClass.getItems();
-            return sqlClass.ExecuteSQLStatement(query, ref iRetVal);
+            var dataset = clsData.ExecuteSQLStatement(query, ref count);
+            return dataset.Tables[0];
         }
-        */
+
 
         // invoice class
         // item class
@@ -53,7 +56,7 @@ namespace GroupProject.Main
         //cmbItem Refreshonload
 
 
-   // }
+        // }
 
 
     }
