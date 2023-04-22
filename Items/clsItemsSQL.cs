@@ -57,9 +57,9 @@ namespace GroupProject.Items
         /// <param name="sItemDesc">variable for Item Desc</param>
         /// <param name="sCost">variable for the cost</param>
         /// <returns></returns>
-        public string InsertItemDesc(string sItemCode, string sItemDesc, string sCost)
+        public string InsertItemDesc(string ItemCode, string sItemDesc, int sCost)
         {
-            string sSQL = "INSERT INTO ItemDesc(ItemCode, ItemDesc, Cost) Values('" + sItemCode + ", " + sItemDesc + ". " + sCost + ")";
+            string sSQL = "INSERT INTO ItemDesc(ItemCode, ItemDesc, Cost) Values('" + ItemCode+"', '" + sItemDesc + "', '" + sCost + "')";
             return sSQL;
         }
 

@@ -44,7 +44,7 @@ namespace GroupProject.Items
 
         public string rCode;
         public string rItemDesc;
-        public string rCost;
+        public int rCost;
 
 
 
@@ -108,14 +108,15 @@ namespace GroupProject.Items
             if (costTextBox != null && descTextBox !=null && codeTextBox != null)
             {
                 
-                List<int> newRow = new List<int>();
+                
                 
                 // List<string> game = new List<string>();
                 // DataGrid.Items.Add
                 rCode = codeTextBox.Text;
-                rCost = costTextBox.Text;
+                rCost = int.Parse(costTextBox.Text);
                 rItemDesc = descTextBox.Text;
-                datatable.Rows.Add(rCode, rItemDesc, rCost);
+
+                insertItem();
                 //game.Add(rCode, )
             }
             else
@@ -123,7 +124,11 @@ namespace GroupProject.Items
                 MessageBox.Show("Please fill in the data to enter.");
             }
         }
-
+        private void insertItem()
+        {
+            var result = itemLogic.insertGame(rCode,rItemDesc, rCost);
+            MessageBox.Show(result);
+        }
 
         /// <summary>
         /// method for deleting items

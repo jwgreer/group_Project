@@ -69,11 +69,21 @@ namespace GroupProject.Items
             var dataset = sqlClass.ExecuteSQLStatement(query, ref count);
             return dataset;
         }
-       // public DataTable DataTable
+
+        public string insertGame(string itemCode, string itemDesc, int Cost)
+        {
+            var query = sqlItemClass.InsertItemDesc(itemCode, itemDesc, Cost);
+            var result = sqlClass.ExecuteNonQuery(query);
+            return result.ToString();
+        }
+
+
+
+        // public DataTable DataTable
         //{
         //    get { return _dataTable; }
         //    set { SetProperty(ref _dataTable, value); }
-       // }
+        // }
 
     }
 
