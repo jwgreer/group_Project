@@ -83,7 +83,7 @@ namespace GroupProject.Main
 
         private void btnEdit_Items_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            //this.Close();
             itemsWindow.ShowDialog();
             
         }
