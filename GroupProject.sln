@@ -5,6 +5,11 @@ VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GroupProject", "GroupProject.csproj", "{26D2F73E-068C-4761-9F4E-5CA835AA0F58}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{94BD22EA-E44D-48A7-9983-3F7D0B5D5627}"
+	ProjectSection(SolutionItems) = preProject
+		bin\Debug\Invoice.accdb = bin\Debug\Invoice.accdb
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
