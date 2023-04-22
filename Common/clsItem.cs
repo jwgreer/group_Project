@@ -1,5 +1,8 @@
-﻿using System;
+﻿using GroupProject.Items;
+using GroupProject.Main;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +17,8 @@ namespace GroupProject.Common
     /// </summary>
     internal class clsItem
     {
+
+      
         //class properities 
         // Item Code getters/setters
         //Item Description getters/setters

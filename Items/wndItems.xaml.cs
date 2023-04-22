@@ -1,8 +1,11 @@
 
 
 
-﻿using System;
+using GroupProject.Main;
+using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Common;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,8 +25,30 @@ namespace GroupProject.Items
     /// </summary>
     public partial class wndItems : Window
     {
+        //wndMain mainWindow = new wndMain();
+
+        // clsItemsLogic clsLogic = new clsItemsLogic();\
+
+        clsItemsLogic itemLogic = new clsItemsLogic();
+        
+        wndItems itemsWindow = new wndItems();
+
+        clsMainSQL sqlClass = new clsMainSQL();
+
+        clsMainLogic mainClass = new clsMainLogic();
+
+        public DataSet invoice;
+
+        public DataTable datatable = new DataTable();
+
+
+
+
+
         public wndItems()
         {
+            // updateDataGrid();
+            updateDataGrid();
             InitializeComponent();
         }
 
@@ -32,6 +57,21 @@ namespace GroupProject.Items
         // if needs to refresh item list.
         // bool HasItemsBeenChanged; // property
 
+        /* private void updateDataGrid()
+         {
+             DataTable list = mainClass.getItems();
+
+             for (int i = 0; i < list.Rows.Count; i++)
+             {
+                 gameDataGrid.Items.Add(list.Rows[i][1]);
+             }
+         }*/
+
+        private void updateDataGrid()
+        {
+            var datSet = itemLogic.fillTable();
+            gameDataGrid.ItemsSource = datSet.Tables[0].DefaultView;
+        }
 
         /// <summary>
         /// method for edit item 
@@ -40,8 +80,8 @@ namespace GroupProject.Items
         /// <param name="e"></param>
         private void editItemBtn_Click(object sender, RoutedEventArgs e)
         {
-
-        }
+           // clsItemsLogic.getItems();                   
+        }       
 
         /// <summary>
         /// method for adding items
@@ -50,6 +90,7 @@ namespace GroupProject.Items
         /// <param name="e"></param>
         private void addItemBtn_Click(object sender, RoutedEventArgs e)
         {
+            
 
         }
 
@@ -71,7 +112,38 @@ namespace GroupProject.Items
         /// <param name="e"></param>
         private void saveItemBtn_Click(object sender, RoutedEventArgs e)
         {
+          
 
         }
+
+        private void mainReturnBtn_Click(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
+           // mainWindow.ShowDialog();
+
+          
+        }
+
+        
+
+
+        private void mainform_Load(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void HandleError(string sClass, string sMethod, string sMessage)
+        {
+            try
+            {
+                //Would write to a file or database here.
+                MessageBox.Show(sClass + "." + sMethod + " -> " + sMessage);
+            }
+            catch (Exception ex)
+            {
+                System.IO.File.AppendAllText("C:\\Error.txt", Environment.NewLine +
+                                             "HandleError Exception: " + ex.Message);
+            }
+        }
+
     }
 }

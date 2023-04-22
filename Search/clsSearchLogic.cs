@@ -25,13 +25,13 @@ namespace GroupProject.Search
         /// <summary>
         /// Connection string to the DB
         /// </summary>
-        private string sConnectionString;
+        //private string sConnectionString;
 
-        clsSearchLogic() 
-        {
+       // clsSearchLogic() 
+        //{
             // Connect to the "mdb" database
-            sConnectionString = @"Provider=Microsoft.Jet.OLEDB.4.0;Data source= " + Directory.GetCurrentDirectory() + "\\Invoice.mdb";
-        }
+           // sConnectionString = @"Provider=Microsoft.Jet.OLEDB.4.0;Data source= " + Directory.GetCurrentDirectory() + "\\Invoice.mdb";
+        //}
 
         // Method for executing the passed in SQL statement
         // public DataSet ExecuteSQLStatement(string sSQL)

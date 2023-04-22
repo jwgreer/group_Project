@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GroupProject.Main;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,6 +26,8 @@ namespace GroupProject.Search
     /// </summary>
     public partial class wndSearch1 : Window
     {
+        wndMain mainWindow = new wndMain();
+
         public wndSearch1()
         {
             InitializeComponent();
@@ -81,7 +84,9 @@ namespace GroupProject.Search
         /// <param name="e"></param>
         private void btnInvoiceSelect_Click(object sender, RoutedEventArgs e)
         {
-
+            this.Close();
+            mainWindow.ShowDialog();
+            
         }
 
         /// <summary>

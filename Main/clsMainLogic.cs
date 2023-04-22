@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,7 +22,39 @@ namespace GroupProject.Main
 
     class clsMainLogic
     {
-     
+
+        public clsMainSQL sqlClass = new clsMainSQL();
+
+
+
+        public DataTable getItems()
+        {
+            int count = 0;
+            clsMainSQL clsData = new clsMainSQL();
+            var query = sqlClass.getItems();
+            var dataset = clsData.ExecuteSQLStatement(query, ref count);
+            return dataset.Tables[0];
+        }
+
+        public string getPrice(string item)
+        {
+            var query = sqlClass.getPrice(item);
+            return sqlClass.ExecuteScalarSQL(query);
+        }
+
+        public DataSet fillTable(string invoiceNum)
+        {
+            var count = 0;
+            var query = sqlClass.SelectLineItems(invoiceNum);
+            var dataset = sqlClass.ExecuteSQLStatement(query, ref count);
+            return dataset;
+        }
+
+        public string getLatestInvoice(string invoiceNum)
+        {
+            var query = sqlClass.SelectMaxInvoiceNum(invoiceNum);
+            return sqlClass.ExecuteScalarSQL(query);
+        }
 
         // invoice class
         // item class
@@ -42,7 +75,7 @@ namespace GroupProject.Main
         //cmbItem Refreshonload
 
 
-   // }
+        // }
 
 
     }

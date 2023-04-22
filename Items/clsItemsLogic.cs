@@ -1,5 +1,7 @@
-﻿using System;
+﻿using GroupProject.Main;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -18,7 +20,7 @@ namespace GroupProject.Items
     /// Checking to see if item is already on a Invoice
     /// 
     /// </summary>
-    class clsItemsLogic
+      public class clsItemsLogic
     {
         //invoice class
         //clsInvoice class
@@ -33,16 +35,42 @@ namespace GroupProject.Items
         /// already on a invoice. isItemOnInvoice(clsItem)
         /// 
 
+         clsMainSQL sqlClass = new clsMainSQL();
+
+
+      
+
         /// <summary>
         /// Connection string to the DB
         /// </summary>
-        private string sConnectionString;
-        clsItemsLogic()
+        public string sConnectionString;
+        public clsItemsLogic()
         {
             // Connect to the "mdb" database
             sConnectionString = @"Provider=Microsoft.Jet.OLEDB.4.0;Data source= " + Directory.GetCurrentDirectory() + "\\Invoice.mdb";
+
         }
+        public DataTable getItems()
+        {
+            int count = 0;
+            clsMainSQL clsData = new clsMainSQL();
+            var query = sqlClass.getItems();
+            var dataset = clsData.ExecuteSQLStatement(query, ref count);
+            return dataset.Tables[0];
+        }
+
+
+        public DataSet fillTable()
+        {
+            var count = 0;
+            var query = sqlClass.getItems();
+            var dataset = sqlClass.ExecuteSQLStatement(query, ref count);
+            return dataset;
+        }
+
+
     }
+
 
 
 }

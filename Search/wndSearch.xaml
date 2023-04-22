@@ -6,6 +6,26 @@
         xmlns:local="clr-namespace:GroupProject.Search"
         mc:Ignorable="d"
         Title="Search Window" Height="450" Width="800">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="LightBlue"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="BorderBrush" Value="Black"></Setter>
+            <Setter Property="Cursor" Value="Hand"></Setter>
+        </Style>
+        <Style TargetType="Label">
+            <Setter Property="FontWeight" Value="ExtraBold"></Setter>
+            <Setter Property="FontSize" Value="12"></Setter>
+
+        </Style>
+        <Style TargetType="Grid">
+            <Setter Property="Background" Value="Beige"></Setter>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="BorderBrush" Value="Black"></Setter>
+            <Setter Property="BorderThickness"  Value="1.5"></Setter>
+        </Style>
+    </Window.Resources>
     <Grid>
         <DataGrid x:Name="gridInvoices" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="10,25,244,10"/>
         <Button x:Name="btnInvoiceSelect" Content="Select Invoice" HorizontalAlignment="Left" Margin="641,253,0,0" VerticalAlignment="Top" Height="42" Width="122" Click="btnInvoiceSelect_Click"/>
