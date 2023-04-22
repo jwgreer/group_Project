@@ -41,11 +41,11 @@ namespace GroupProject.Main
 
         public string itemCost = "";
 
-        public string itemCode = "H";
+        public string itemCode = "";
 
-        public int invoiceNum = 5003;
+        public int invoiceNum;
 
-        public int lineItem = 3;
+        public int lineItem;
 
         public wndMain()
         {
@@ -116,6 +116,11 @@ namespace GroupProject.Main
                 getPrices();
                 getCode();
                 itemName = cmbItems.SelectedItem.ToString();
+
+                test1.Content = invoiceNum;
+                test2.Content = lineItem;
+                test3.Content = itemCode;
+
             }
         }
 
@@ -143,8 +148,22 @@ namespace GroupProject.Main
         private void insertItem()
         {
             var result = mainClass.insertItem(invoiceNum, lineItem, itemCode);
-            MessageBox.Show(result);
+            
         }
+
+        private void lineItemCounter()
+        {
+            int counter = 0;
+            for (int i = 0; i < dataGrid.Items.Count; i++)
+            {
+                counter++;
+                lineItem = counter;
+            }
+
+            // Display the total count
+            MessageBox.Show($"Total number of rows: {counter}");
+        }
+
 
         private void btnEdit_Invoice_Click(object sender, RoutedEventArgs e)
         {
@@ -157,6 +176,9 @@ namespace GroupProject.Main
             totalCost.Visibility = Visibility.Visible;
             getInvoiceDate();
             getTotalCost();
+            lineItemCounter();
+
+            
         }
 
         private void loadLatestInvoiceNum()
@@ -164,7 +186,7 @@ namespace GroupProject.Main
             string latestInvoiceNum = mainClass.getLatestInvoice("");
             invoiceNumber.Content = latestInvoiceNum;
             varForInvoiceDate = latestInvoiceNum;
-            //invoiceNum = latestInvoiceNum;
+            invoiceNum = int.Parse(latestInvoiceNum);
         }
 
         private void getInvoiceDate()
@@ -214,6 +236,8 @@ namespace GroupProject.Main
         private void btnAdd_Item_Click(object sender, RoutedEventArgs e)
         {
             insertItem();
+            updateDataGrid();
+            lineItemCounter();
         }
     }
 }
