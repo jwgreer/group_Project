@@ -154,7 +154,7 @@ namespace GroupProject.Main
             }
         }
 
-        
+
 
 
         //- UPDATE Invoices SET TotalCost = 1200 WHERE InvoiceNum = 123
@@ -164,9 +164,9 @@ namespace GroupProject.Main
         /// <param name="sInvoiceID"></param>
         /// <param name="sTotalCost"
         /// <returns></returns>
-        public string UpdateInvoiceData(string sInvoiceID, string sTotalCost)
+        public string UpdateInvoiceData(int sTotalCost, int sInvoiceID)
         {
-            string sSQL = "Update * FROM Invoices SET TotalCost = " + sTotalCost + "WHERE InvoiceNum = " + sInvoiceID;
+            string sSQL = "UPDATE Invoices SET TotalCost = " + sTotalCost + " WHERE InvoiceNum = " + sInvoiceID;
 
             return sSQL;
         }
@@ -181,7 +181,7 @@ namespace GroupProject.Main
         /// <returns></returns>
         public string InstertItems(int sInvoiceID, int sLineItemNum, string sItemCode)
         {
-            string sSQL = "INSERT INTO LineItems(InvoiceNum, LineItemNum, ItemCode) Values(" + sInvoiceID + ", " + sLineItemNum + ", '" + sItemCode + "')";
+            string sSQL = "INSERT INTO LineItems(InvoiceNum, LineItemNum, ItemCode) Values('" + sInvoiceID + "', '" + sLineItemNum + "', '" + sItemCode + "')";
 
             return sSQL;
         }

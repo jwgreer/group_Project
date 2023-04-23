@@ -82,6 +82,13 @@ namespace GroupProject.Main
             return result.ToString();
         }
 
+        public string updateTotalCost(int totalCost, int invoiceNum)
+        {
+            var query = sqlClass.UpdateInvoiceData(totalCost, invoiceNum);
+            var result = sqlClass.ExecuteNonQuery(query);
+            return result.ToString();
+        }
+
         // invoice class
         // item class
         // invoice class list
