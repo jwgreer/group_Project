@@ -84,7 +84,14 @@ namespace GroupProject.Items
             return result.ToString();
         }
 
-       // public string updateGame();
+        public string updateGame(string sItemCode, string sItemDesc, int sCost)
+        {
+            var query = sqlItemClass.UpdateItemDesc(sItemCode, sItemDesc, sCost);
+            var result = sqlClass.ExecuteNonQuery(query);
+            return result.ToString();
+        }
+
+        // public string updateGame();
 
         // public DataTable DataTable
         //{

@@ -44,9 +44,9 @@ namespace GroupProject.Items
         /// <param name="sItemDesc">variable for item Desc</param>
         /// <param name="sCost">variable for item Cost</param>
         /// <returns></returns>
-        public string UpdateItemDesc(string sItemCode, string sItemDesc, string sCost)
+        public string UpdateItemDesc(string sItemCode, string sItemDesc, int sCost)
         {
-            string sSQL = "UPDATE ItemDesc SET ItemDesc =" + sItemDesc + ", Cost ="+ sCost + " WHERE ItemCode = " +sItemCode;
+            string sSQL = "UPDATE ItemDesc SET ItemDesc ='" + sItemDesc + "', Cost ='"+ sCost + "' WHERE ItemCode = '" +sItemCode+"'";
             return sSQL;
         }
 

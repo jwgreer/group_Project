@@ -91,10 +91,21 @@ namespace GroupProject.Items
         /// <param name="e"></param>
         private void editItemBtn_Click(object sender, RoutedEventArgs e)
         {
-           // DataRowView drv = gameDataGrid.CurrentRow.DataBoundItem as DataRowView;
+
+
+            var selectedItem = gameDataGrid.SelectedItem;
+            if (selectedItem != null)
+            {
+                
+                rCost = int.Parse(costTextBox.Text);
+                rItemDesc = descTextBox.Text;
+                var result  = itemLogic.updateGame(rCode, rItemDesc, rCost);
+                updateDataGrid();
+            }
+            // DataRowView drv = gameDataGrid.CurrentRow.DataBoundItem as DataRowView;
             //DataRow[] rowsToUpdate = new DataRow[] { drv.Row };
             //gameDataGrid.Rows[0].Selected = true;
-            
+
         }       
 
         /// <summary>
@@ -181,9 +192,18 @@ namespace GroupProject.Items
                 int rowIndex = gameDataGrid.Items.IndexOf(gameDataGrid.SelectedCells[0].Item);
                 // Get the contents of the cells in the selected row
                 TextBlock textBlock = gameDataGrid.Columns[0].GetCellContent(gameDataGrid.Items[rowIndex]) as TextBlock;
+                TextBlock textBlockTwo = gameDataGrid.Columns[1].GetCellContent(gameDataGrid.Items[rowIndex]) as TextBlock;
+                TextBlock textBlockThree = gameDataGrid.Columns[2].GetCellContent(gameDataGrid.Items[rowIndex]) as TextBlock;
+
+                string value3 = textBlockThree != null ? textBlockThree.Text : "";
+                string value2 = textBlockTwo != null ? textBlockTwo.Text : "";
                 string value1 = textBlock != null ? textBlock.Text : "";
-                // Display value1 in a message box
+                
+
                 rCode = value1;
+                rItemDesc = value2;
+                rCost = int.Parse(value3);
+                MessageBox.Show(rCost.ToString());
                // MessageBox.Show(value1);
             }
         }
