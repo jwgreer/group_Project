@@ -79,6 +79,11 @@ namespace GroupProject.Main
             return dataset;
         }
 
+        public string createInvoice(string sInvoiceDate, string sTotalCost)
+        {
+            var query = sqlClass.InsertInvoice(sInvoiceDate, sTotalCost);
+            return sqlClass.ExecuteScalarSQL(query);
+        }
         public string getLatestInvoice(string invoiceNum)
         {
             var query = sqlClass.SelectMaxInvoiceNum(invoiceNum);

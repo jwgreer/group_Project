@@ -244,11 +244,15 @@ namespace GroupProject.Main
             invoiceMode = false;
             if (invoiceMode == false)
             {
+                DateTime today = DateTime.Today;
+                today.ToString();
+                string totalcost = "0";
                 invoiceNumber.Visibility = Visibility.Visible;
                 invoiceDate.Visibility = Visibility.Visible;
                 invoiceDate.Content = DateTime.Now.ToString("MM/dd/yyyy");
                 invoiceNumber.Content = "TBD";
                 dataGrid.ItemsSource = null;
+                mainClass.createInvoice(today.ToString(), totalcost);
                 disableButtons();
             }
         }
