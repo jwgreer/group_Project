@@ -80,6 +80,9 @@ namespace GroupProject.Items
                     var datSet = itemLogic.fillTable();
                     gameDataGrid.ItemsSource = datSet.Tables[0].DefaultView;
                 }
+                codeTextBox.Clear();
+                costTextBox.Clear();
+                descTextBox.Clear();
             }
             catch (Exception ex) { System.Diagnostics.Debug.WriteLine(ex.Message); }
         }
@@ -106,7 +109,7 @@ namespace GroupProject.Items
             //DataRow[] rowsToUpdate = new DataRow[] { drv.Row };
             //gameDataGrid.Rows[0].Selected = true;
 
-        }       
+        }
 
         /// <summary>
         /// method for adding items
@@ -115,36 +118,55 @@ namespace GroupProject.Items
         /// <param name="e"></param>
         private void addItemBtn_Click(object sender, RoutedEventArgs e)
         {
-            // gameDataGrid.Rows.Add()
-            if (costTextBox != null && descTextBox !=null && codeTextBox != null)
+            try
             {
-                
-                
-                
-                // List<string> game = new List<string>();
-                // DataGrid.Items.Add
-                rCode = codeTextBox.Text;
-                rCost = int.Parse(costTextBox.Text);
-                rItemDesc = descTextBox.Text;
+                // gameDataGrid.Rows.Add()
+                if (costTextBox != null && descTextBox != null && codeTextBox != null)
+                {
 
-                insertItem();
-                updateDataGrid();
-                //game.Add(rCode, )
+
+
+                    // List<string> game = new List<string>();
+                    // DataGrid.Items.Add
+                    rCode = codeTextBox.Text;
+                    rCost = int.Parse(costTextBox.Text);
+                    rItemDesc = descTextBox.Text;
+
+                    insertItem();
+                    updateDataGrid();
+                    //game.Add(rCode, )
+                    codeTextBox.Clear();
+                    costTextBox.Clear();
+                    descTextBox.Clear();
+
+                }
+                else
+                {
+                    MessageBox.Show("Please fill in the data to enter.");
+                }
+                
+
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Please fill in the data to enter.");
+                System.IO.File.AppendAllText("C:\\Error.txt", Environment.NewLine +
+                                             "HandleError Exception: " + ex.Message);
             }
-            codeTextBox.Clear();
-            costTextBox.Clear();
-            descTextBox.Clear();
         }
-        private void insertItem()
-        {
-            var result = itemLogic.insertGame(rCode,rItemDesc, rCost);
             
+        private void insertItem()
+            {
+            try
+            {
+                var result = itemLogic.insertGame(rCode, rItemDesc, rCost);
+            }
+            catch (Exception ex)
+            {
+                System.IO.File.AppendAllText("C:\\Error.txt", Environment.NewLine +
+                                             "HandleError Exception: " + ex.Message);
+            }
         }
-      
+        
 
         /// <summary>
         /// method for deleting items
@@ -155,16 +177,23 @@ namespace GroupProject.Items
         {
 
 
-
-         var selectedItem = gameDataGrid.SelectedItem;
-           if (selectedItem != null)
-           {
-            itemLogic.DeleteLineGame(rCode);
-            itemLogic.DeleteGame(rCode);
-            updateDataGrid();
+            try
+            {
+                var selectedItem = gameDataGrid.SelectedItem;
+                if (selectedItem != null)
+                {
+                    itemLogic.DeleteLineGame(rCode);
+                    itemLogic.DeleteGame(rCode);
+                    updateDataGrid();
+                }
             }
-        // MessageBox.Show(selectedItem);
-}
+            catch (Exception ex)
+            {
+                System.IO.File.AppendAllText("C:\\Error.txt", Environment.NewLine +
+                                             "HandleError Exception: " + ex.Message);
+            }
+            // MessageBox.Show(selectedItem);
+        }
 
       
 
@@ -181,34 +210,49 @@ namespace GroupProject.Items
 
         private void mainReturnBtn_Click(object sender, RoutedEventArgs e)
         {
-            this.Hide();
-           // mainWindow.ShowDialog();
+            try
+            {
+                this.Hide();
+                // mainWindow.ShowDialog();
 
-          
+            }
+            catch (Exception ex)
+            {
+                System.IO.File.AppendAllText("C:\\Error.txt", Environment.NewLine +
+                                             "HandleError Exception: " + ex.Message);
+            }
         }
 
 
         private void clicked(object sender, SelectionChangedEventArgs e)
         {
-            if (gameDataGrid.SelectedCells.Count > 0)
+            try
             {
-                // Get the row index of the selected cells
-                int rowIndex = gameDataGrid.Items.IndexOf(gameDataGrid.SelectedCells[0].Item);
-                // Get the contents of the cells in the selected row
-                TextBlock textBlock = gameDataGrid.Columns[0].GetCellContent(gameDataGrid.Items[rowIndex]) as TextBlock;
-                TextBlock textBlockTwo = gameDataGrid.Columns[1].GetCellContent(gameDataGrid.Items[rowIndex]) as TextBlock;
-                TextBlock textBlockThree = gameDataGrid.Columns[2].GetCellContent(gameDataGrid.Items[rowIndex]) as TextBlock;
+                if (gameDataGrid.SelectedCells.Count > 0)
+                {
+                    // Get the row index of the selected cells
+                    int rowIndex = gameDataGrid.Items.IndexOf(gameDataGrid.SelectedCells[0].Item);
+                    // Get the contents of the cells in the selected row
+                    TextBlock textBlock = gameDataGrid.Columns[0].GetCellContent(gameDataGrid.Items[rowIndex]) as TextBlock;
+                    TextBlock textBlockTwo = gameDataGrid.Columns[1].GetCellContent(gameDataGrid.Items[rowIndex]) as TextBlock;
+                    TextBlock textBlockThree = gameDataGrid.Columns[2].GetCellContent(gameDataGrid.Items[rowIndex]) as TextBlock;
 
-                string value3 = textBlockThree != null ? textBlockThree.Text : "";
-                string value2 = textBlockTwo != null ? textBlockTwo.Text : "";
-                string value1 = textBlock != null ? textBlock.Text : "";
-                
+                    string value3 = textBlockThree != null ? textBlockThree.Text : "";
+                    string value2 = textBlockTwo != null ? textBlockTwo.Text : "";
+                    string value1 = textBlock != null ? textBlock.Text : "";
 
-                rCode = value1;
-                rItemDesc = value2;
-                rCost = int.Parse(value3);
-                MessageBox.Show(rCost.ToString());
-               // MessageBox.Show(value1);
+
+                    rCode = value1;
+                    rItemDesc = value2;
+                    rCost = int.Parse(value3);
+                    MessageBox.Show(rCost.ToString());
+                    // MessageBox.Show(value1);
+                }
+            }
+            catch (Exception ex)
+            {
+                System.IO.File.AppendAllText("C:\\Error.txt", Environment.NewLine +
+                                             "HandleError Exception: " + ex.Message);
             }
         }
 
