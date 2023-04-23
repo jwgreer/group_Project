@@ -421,5 +421,17 @@ namespace GroupProject.Search
             }
             
         }
+        /// <summary>
+        /// Method will adjust column widths when Datagrid is loaded
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void dataGrid_Loaded(object sender, RoutedEventArgs e)
+        {
+            foreach (var column in ((DataGrid)sender).Columns)
+            {
+                column.Width = new DataGridLength(column.ActualWidth + 83);
+            }
+        }
     }
 }

@@ -27,7 +27,7 @@
         </Style>
     </Window.Resources>
     <Grid>
-        <DataGrid x:Name="gridInvoices" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="10,25,244,10" SelectionChanged="gridInvoices_SelectionChanged"/>
+        <DataGrid x:Name="gridInvoices" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="10,25,244,10" SelectionChanged="gridInvoices_SelectionChanged" Loaded="dataGrid_Loaded"/>
         <Button x:Name="btnInvoiceSelect" Content="Select Invoice" HorizontalAlignment="Left" Margin="641,253,0,0" VerticalAlignment="Top" Height="42" Width="122" Click="btnInvoiceSelect_Click"/>
         <Button x:Name="btnInvoiceClear" Content="Clear Selection" HorizontalAlignment="Left" Margin="641,326,0,0" VerticalAlignment="Top" Click="btnInvoiceClear_Click" Width="122"/>
         <ComboBox x:Name="cbInvoiceNum" HorizontalAlignment="Left" Margin="648,56,0,0" VerticalAlignment="Top" Width="142" SelectionChanged="ComboBox_SelectionChanged" IsSynchronizedWithCurrentItem="False"/>
