@@ -142,15 +142,12 @@ namespace GroupProject.Items
 
 
 
-            var selectedItem = gameDataGrid.SelectedItem;
-            
-            lbltest.Content = selectedItem.ToString();
+         var selectedItem = gameDataGrid.SelectedItem;
            if (selectedItem != null)
            {
-                        
-                gameDataGrid.Items.Remove(selectedItem);
-               updateDataGrid();
-           }
+            itemLogic.DeleteGame(rCode);
+            updateDataGrid();
+            }
         // MessageBox.Show(selectedItem);
 }
 
@@ -175,8 +172,21 @@ namespace GroupProject.Items
           
         }
 
-        
 
+        private void clicked(object sender, SelectionChangedEventArgs e)
+        {
+            if (gameDataGrid.SelectedCells.Count > 0)
+            {
+                // Get the row index of the selected cells
+                int rowIndex = gameDataGrid.Items.IndexOf(gameDataGrid.SelectedCells[0].Item);
+                // Get the contents of the cells in the selected row
+                TextBlock textBlock = gameDataGrid.Columns[0].GetCellContent(gameDataGrid.Items[rowIndex]) as TextBlock;
+                string value1 = textBlock != null ? textBlock.Text : "";
+                // Display value1 in a message box
+                rCode = value1;
+               // MessageBox.Show(value1);
+            }
+        }
 
         private void mainform_Load(object sender, RoutedEventArgs e)
         {

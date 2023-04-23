@@ -77,13 +77,14 @@ namespace GroupProject.Items
             return result.ToString();
         }
 
-        public string DeleteGame(string itemCode, string itemDesc, int Cost)
+        public string DeleteGame(string sItemCode)
         {
-            var query = sqlItemClass.InsertItemDesc(itemCode, itemDesc, Cost);
+            var query = sqlItemClass.DeleteItemDesc(sItemCode);
             var result = sqlClass.ExecuteNonQuery(query);
             return result.ToString();
         }
 
+       // public string updateGame();
 
         // public DataTable DataTable
         //{
