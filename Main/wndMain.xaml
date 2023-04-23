@@ -32,7 +32,7 @@
         <Button x:Name="btnEdit_Invoice" Content="Edit Invoice" HorizontalAlignment="Left" Margin="332,18,0,0" VerticalAlignment="Top" Click="btnEdit_Invoice_Click"/>
         <Button x:Name="btnSave_Invoice" Content="Save Invoice" HorizontalAlignment="Left" Margin="433,18,0,0" VerticalAlignment="Top" Click="btnSave_Invoice_Click"/>
         <Button x:Name="btnAdd_Item" Content="Add Item" HorizontalAlignment="Left" Margin="305,291,0,0" VerticalAlignment="Top" Click="btnAdd_Item_Click"/>
-        <Button x:Name="btnRemove_Item" Content="Remove Item" HorizontalAlignment="Left" Margin="291,348,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btnRemove_Item" Content="Remove Item" HorizontalAlignment="Left" Margin="291,348,0,0" VerticalAlignment="Top" Click="btnRemove_Item_Click"/>
         <Label x:Name="lblInvoice_Date" Content="Invoice Date" HorizontalAlignment="Left" Margin="46,84,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblInvoice_Number" Content="Invoice Number" HorizontalAlignment="Left" Margin="37,133,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblTotal_Cost" Content="Total Cost" HorizontalAlignment="Left" Margin="63,186,0,0" VerticalAlignment="Top"/>

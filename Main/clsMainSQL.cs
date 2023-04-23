@@ -246,10 +246,9 @@ namespace GroupProject.Main
         /// </summary>
         /// <param name="sInvoiceNum"></param>
         /// <returns></returns>
-        public string DeleteLineItems(string sInvoiceNum)
+        public string DeleteLineItems(string sItemCode)
         {
-            string sSQL = "DELETE * FROM LineItems WHERE InvoiceNum =" + sInvoiceNum;
-
+            string sSQL = "DELETE FROM LineItems WHERE ItemCode = '" + sItemCode + "' AND InvoiceNum = 5003";
             return sSQL;
         }
 
@@ -289,5 +288,6 @@ namespace GroupProject.Main
             return sSQL;
         }
 
+        
     }
 }
