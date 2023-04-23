@@ -263,7 +263,7 @@ namespace GroupProject.Main
             totalCost.Visibility = Visibility.Hidden;
             dataGrid.ItemsSource = null;
             enableButtons();
-            
+            loopThroughforTotal();
 
             var updateCost = mainClass.updateTotalCost(totalInvoiceCost, invoiceNum);
         }
