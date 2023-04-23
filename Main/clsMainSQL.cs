@@ -246,22 +246,36 @@ namespace GroupProject.Main
         /// </summary>
         /// <param name="sInvoiceNum"></param>
         /// <returns></returns>
-        public string DeleteLineItems(string sItemCode)
+        public string DeleteLineItems(string sItemCode, int invoiceNum)
         {
-            string sSQL = "DELETE FROM LineItems WHERE ItemCode = '" + sItemCode + "' AND InvoiceNum = 5003";
+            string sSQL = "DELETE FROM LineItems WHERE ItemCode = '" + sItemCode + "' AND InvoiceNum ="+ invoiceNum ;
             return sSQL;
         }
 
+        /// <summary>
+        /// gets all items
+        /// </summary>
+        /// <returns></returns>
         public string getItems()
         {
             return "Select * From ItemDesc";
         }
 
+        /// <summary>
+        /// gets price of an item
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns></returns>
         public string getPrice(string item)
         {
             return $"SELECT Cost FROM ItemDesc WHERE ItemDesc = '{item}'" ;
         }
 
+        /// <summary>
+        /// gets highest invoice number
+        /// </summary>
+        /// <param name="invoiceNum"></param>
+        /// <returns></returns>
         public string SelectMaxInvoiceNum(string invoiceNum)
         {
             string sSQL = "SELECT MAX(InvoiceNum) FROM Invoices";
@@ -269,6 +283,11 @@ namespace GroupProject.Main
             return sSQL;
         }
 
+        /// <summary>
+        /// gets date
+        /// </summary>
+        /// <param name="sInvoiceNum"></param>
+        /// <returns></returns>
         public string getDate(string sInvoiceNum)
         {
             string sSQL = "SELECT FORMAT(InvoiceDate, 'MM/dd/yyyy') AS InvoiceDate FROM Invoices WHERE InvoiceNum = " + sInvoiceNum;
@@ -276,18 +295,33 @@ namespace GroupProject.Main
             return sSQL;
         }
 
+        /// <summary>
+        /// getst the total cost of the invoice
+        /// </summary>
+        /// <param name="sInvoiceNum"></param>
+        /// <returns></returns>
         public string getTotalCost(string sInvoiceNum)
         {
             string sSQL = "SELECT TotalCost FROM Invoices WHERE InvoiceNum = " + sInvoiceNum;
             return sSQL;
         }
 
+        /// <summary>
+        /// gets the item code
+        /// </summary>
+        /// <param name="itemName"></param>
+        /// <returns></returns>
         public string getItemCode(string itemName)
         {
             string sSQL = $"SELECT ItemCode FROM ItemDesc WHERE ItemDesc = '{itemName}'";
             return sSQL;
         }
 
+        /// <summary>
+        /// gets the highest line item
+        /// </summary>
+        /// <param name="invoiceNum"></param>
+        /// <returns></returns>
         public string getHighestLineItem(int invoiceNum)
         {
             string sSQL = "SELECT MAX(LineItemNum) AS HighestLineItemNum FROM LineItems WHERE InvoiceNum =" + invoiceNum;

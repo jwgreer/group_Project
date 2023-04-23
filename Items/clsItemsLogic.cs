@@ -70,7 +70,7 @@ namespace GroupProject.Items
         /// <exception cref="Exception"></exception>
         public DataTable getItems()
         {
-            try
+            try { 
                 int count = 0;
                 clsMainSQL clsData = new clsMainSQL();
                 var query = sqlClass.getItems();

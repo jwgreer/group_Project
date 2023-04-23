@@ -42,15 +42,16 @@
         <ComboBox x:Name="cmbItems" HorizontalAlignment="Left" Margin="139,287,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cmbItems_Selection"/>
         <DataGrid x:Name="dataGrid" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="375,235,0,0" SelectionChanged="clicked"/>
         <Button x:Name="btnCreate_Invoice" Content="Create Invoice" HorizontalAlignment="Left" Margin="226,18,0,0" VerticalAlignment="Top" Click="btnCreate_Invoice_Click"/>
-        <TextBox x:Name="costTextBox" HorizontalAlignment="Left" Margin="128,339,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="costTextBox" HorizontalAlignment="Left" Margin="128,339,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsReadOnly="True"/>
         <Label x:Name="invoiceNumber" Content="Label" HorizontalAlignment="Left" Margin="158,133,0,0" VerticalAlignment="Top"/>
         <Label x:Name="invoiceDate" Content="Label" HorizontalAlignment="Left" Margin="158,84,0,0" VerticalAlignment="Top"/>
         <Label x:Name="totalCost" Content="0" HorizontalAlignment="Left" Margin="158,186,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="itemCodeLabel" Content="" HorizontalAlignment="Left" Margin="507,133,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="test1" Content="" HorizontalAlignment="Left" Margin="588,38,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="test2" Content="" HorizontalAlignment="Left" Margin="609,84,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="test3" Content="" HorizontalAlignment="Left" Margin="630,133,0,0" VerticalAlignment="Top"/>
-       
+        <Label x:Name="itemCodeLabel" Content="" HorizontalAlignment="Left" Margin="507,133,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
+        <Label x:Name="test1" Content="" HorizontalAlignment="Left" Margin="588,38,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
+        <Label x:Name="test2" Content="" HorizontalAlignment="Left" Margin="609,84,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
+        <Label x:Name="test3" Content="" HorizontalAlignment="Left" Margin="630,133,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
+        <Label x:Name="highestRow" Content="" HorizontalAlignment="Left" Margin="447,133,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
+
 
     </Grid>
 </Window>
