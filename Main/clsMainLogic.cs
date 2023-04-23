@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Security.AccessControl;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -109,6 +110,14 @@ namespace GroupProject.Main
             var result = sqlClass.ExecuteNonQuery(query);
             return result.ToString();
         }
+
+        public string removeItems(string sItemCode)
+        {
+            var query = sqlClass.DeleteLineItems(sItemCode);
+            var result = sqlClass.ExecuteNonQuery(query);
+            return result.ToString();
+        }
+        
 
         // invoice class
         // item class
