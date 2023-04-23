@@ -44,9 +44,9 @@ namespace GroupProject.Items
         /// <param name="sItemDesc">variable for item Desc</param>
         /// <param name="sCost">variable for item Cost</param>
         /// <returns></returns>
-        public string UpdateItemDesc(string sItemCode, string sItemDesc, string sCost)
+        public string UpdateItemDesc(string sItemCode, string sItemDesc, int sCost)
         {
-            string sSQL = "UPDATE ItemDesc SET ItemDesc =" + sItemDesc + ", Cost ="+ sCost + " WHERE ItemCode = " +sItemCode;
+            string sSQL = "UPDATE ItemDesc SET ItemDesc ='" + sItemDesc + "', Cost ='"+ sCost + "' WHERE ItemCode = '" +sItemCode+"'";
             return sSQL;
         }
 
@@ -57,10 +57,15 @@ namespace GroupProject.Items
         /// <param name="sItemDesc">variable for Item Desc</param>
         /// <param name="sCost">variable for the cost</param>
         /// <returns></returns>
-        public string InsertItemDesc(string sItemCode, string sItemDesc, string sCost)
+        public string InsertItemDesc(string ItemCode, string sItemDesc, int sCost)
         {
-            string sSQL = "INSERT INTO ItemDesc(ItemCode, ItemDesc, Cost) Values('" + sItemCode + ", " + sItemDesc + ". " + sCost + ")";
+            string sSQL = "INSERT INTO ItemDesc(ItemCode, ItemDesc, Cost) Values('" + ItemCode+"', '" + sItemDesc + "', '" + sCost + "')";
             return sSQL;
+        }
+
+        public string getItemsDesc()
+        {
+            return "Select * From ItemDesc";
         }
 
         /// <summary>
@@ -71,6 +76,13 @@ namespace GroupProject.Items
         public string DeleteItemDesc(string sItemCode)
         {
             string sSQL = "Delete FROM ItemDesc WHERE ItemCode = '" + sItemCode + "'";
+            return sSQL;
+        }
+
+
+        public string DeleteLineItem(string sItemCode)
+        {
+            string sSQL = "Delete FROM LineItems WHERE ItemCode = '" + sItemCode + "'";
             return sSQL;
         }
         ///- select ItemCode, ItemDesc, Cost from ItemDesc

@@ -4,6 +4,7 @@
 using GroupProject.Main;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data;
 using System.Data.Common;
 using System.Linq;
@@ -41,7 +42,9 @@ namespace GroupProject.Items
 
         public DataTable datatable = new DataTable();
 
-
+        public string rCode;
+        public string rItemDesc;
+        public int rCost;
 
 
 
@@ -88,8 +91,21 @@ namespace GroupProject.Items
         /// <param name="e"></param>
         private void editItemBtn_Click(object sender, RoutedEventArgs e)
         {
-            // clsItemsLogic.getItems();
-            updateDataGrid();
+
+
+            var selectedItem = gameDataGrid.SelectedItem;
+            if (selectedItem != null)
+            {
+                
+                rCost = int.Parse(costTextBox.Text);
+                rItemDesc = descTextBox.Text;
+                var result  = itemLogic.updateGame(rCode, rItemDesc, rCost);
+                updateDataGrid();
+            }
+            // DataRowView drv = gameDataGrid.CurrentRow.DataBoundItem as DataRowView;
+            //DataRow[] rowsToUpdate = new DataRow[] { drv.Row };
+            //gameDataGrid.Rows[0].Selected = true;
+
         }       
 
         /// <summary>
@@ -99,9 +115,33 @@ namespace GroupProject.Items
         /// <param name="e"></param>
         private void addItemBtn_Click(object sender, RoutedEventArgs e)
         {
-            
+            // gameDataGrid.Rows.Add()
+            if (costTextBox != null && descTextBox !=null && codeTextBox != null)
+            {
+                
+                
+                
+                // List<string> game = new List<string>();
+                // DataGrid.Items.Add
+                rCode = codeTextBox.Text;
+                rCost = int.Parse(costTextBox.Text);
+                rItemDesc = descTextBox.Text;
 
+                insertItem();
+                updateDataGrid();
+                //game.Add(rCode, )
+            }
+            else
+            {
+                MessageBox.Show("Please fill in the data to enter.");
+            }
         }
+        private void insertItem()
+        {
+            var result = itemLogic.insertGame(rCode,rItemDesc, rCost);
+            
+        }
+      
 
         /// <summary>
         /// method for deleting items
@@ -111,8 +151,19 @@ namespace GroupProject.Items
         private void deleteItemBtn_Click(object sender, RoutedEventArgs e)
         {
 
-        }
 
+
+         var selectedItem = gameDataGrid.SelectedItem;
+           if (selectedItem != null)
+           {
+            itemLogic.DeleteLineGame(rCode);
+            itemLogic.DeleteGame(rCode);
+            updateDataGrid();
+            }
+        // MessageBox.Show(selectedItem);
+}
+
+      
 
         /// <summary>
         /// method for saving items
@@ -133,8 +184,30 @@ namespace GroupProject.Items
           
         }
 
-        
 
+        private void clicked(object sender, SelectionChangedEventArgs e)
+        {
+            if (gameDataGrid.SelectedCells.Count > 0)
+            {
+                // Get the row index of the selected cells
+                int rowIndex = gameDataGrid.Items.IndexOf(gameDataGrid.SelectedCells[0].Item);
+                // Get the contents of the cells in the selected row
+                TextBlock textBlock = gameDataGrid.Columns[0].GetCellContent(gameDataGrid.Items[rowIndex]) as TextBlock;
+                TextBlock textBlockTwo = gameDataGrid.Columns[1].GetCellContent(gameDataGrid.Items[rowIndex]) as TextBlock;
+                TextBlock textBlockThree = gameDataGrid.Columns[2].GetCellContent(gameDataGrid.Items[rowIndex]) as TextBlock;
+
+                string value3 = textBlockThree != null ? textBlockThree.Text : "";
+                string value2 = textBlockTwo != null ? textBlockTwo.Text : "";
+                string value1 = textBlock != null ? textBlock.Text : "";
+                
+
+                rCode = value1;
+                rItemDesc = value2;
+                rCost = int.Parse(value3);
+                MessageBox.Show(rCost.ToString());
+               // MessageBox.Show(value1);
+            }
+        }
 
         private void mainform_Load(object sender, RoutedEventArgs e)
         {

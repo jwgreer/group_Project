@@ -30,9 +30,9 @@
         <Button x:Name="btnSearch" Content="Search" HorizontalAlignment="Left" Margin="26,13,0,0" VerticalAlignment="Top" Click="btnSearch_Click"/>
         <Button x:Name="btnEdit_Items" Content="Edit Items" HorizontalAlignment="Left" Margin="98,13,0,0" VerticalAlignment="Top" Click="btnEdit_Items_Click"/>
         <Button x:Name="btnEdit_Invoice" Content="Edit Invoice" HorizontalAlignment="Left" Margin="332,18,0,0" VerticalAlignment="Top" Click="btnEdit_Invoice_Click"/>
-        <Button x:Name="btnSave_Invoice" Content="Save Invoice" HorizontalAlignment="Left" Margin="433,18,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="btnAdd_Item" Content="Add Item" HorizontalAlignment="Left" Margin="305,291,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="btnRemove_Item" Content="Remove Item" HorizontalAlignment="Left" Margin="291,348,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btnSave_Invoice" Content="Save Invoice" HorizontalAlignment="Left" Margin="433,18,0,0" VerticalAlignment="Top" Click="btnSave_Invoice_Click"/>
+        <Button x:Name="btnAdd_Item" Content="Add Item" HorizontalAlignment="Left" Margin="305,291,0,0" VerticalAlignment="Top" Click="btnAdd_Item_Click"/>
+        <Button x:Name="btnRemove_Item" Content="Remove Item" HorizontalAlignment="Left" Margin="291,348,0,0" VerticalAlignment="Top" Click="btnRemove_Item_Click"/>
         <Label x:Name="lblInvoice_Date" Content="Invoice Date" HorizontalAlignment="Left" Margin="46,84,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblInvoice_Number" Content="Invoice Number" HorizontalAlignment="Left" Margin="37,133,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblTotal_Cost" Content="Total Cost" HorizontalAlignment="Left" Margin="63,186,0,0" VerticalAlignment="Top"/>
@@ -40,10 +40,16 @@
         <Label x:Name="lblCost" Content="Cost:" HorizontalAlignment="Left" Margin="76,335,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblItems_On_Invoice" Content="Items on Invoice" HorizontalAlignment="Left" Margin="375,199,0,0" VerticalAlignment="Top"/>
         <ComboBox x:Name="cmbItems" HorizontalAlignment="Left" Margin="139,287,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cmbItems_Selection"/>
-        <DataGrid x:Name="dataGrid" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="375,235,0,0"/>
-        <Button x:Name="btnCreate_Invoice" Content="Create Invoice" HorizontalAlignment="Left" Margin="226,18,0,0" VerticalAlignment="Top"/>
+        <DataGrid x:Name="dataGrid" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="375,235,0,0" SelectionChanged="clicked"/>
+        <Button x:Name="btnCreate_Invoice" Content="Create Invoice" HorizontalAlignment="Left" Margin="226,18,0,0" VerticalAlignment="Top" Click="btnCreate_Invoice_Click"/>
         <TextBox x:Name="costTextBox" HorizontalAlignment="Left" Margin="128,339,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Label x:Name="invoiceNumber" Content="Label" HorizontalAlignment="Left" Margin="588,97,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="invoiceNumber" Content="Label" HorizontalAlignment="Left" Margin="158,133,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="invoiceDate" Content="Label" HorizontalAlignment="Left" Margin="158,84,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="totalCost" Content="Label" HorizontalAlignment="Left" Margin="158,186,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="itemCodeLabel" Content="Label" HorizontalAlignment="Left" Margin="507,133,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="test1" Content="Label" HorizontalAlignment="Left" Margin="588,38,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="test2" Content="Label" HorizontalAlignment="Left" Margin="609,84,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="test3" Content="Label" HorizontalAlignment="Left" Margin="630,133,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

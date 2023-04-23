@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Security.AccessControl;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -26,6 +27,27 @@ namespace GroupProject.Main
         public clsMainSQL sqlClass = new clsMainSQL();
 
 
+        private string sCode;
+
+        private string sItemDesc;
+
+        private int sCost;
+        
+        /// <summary>
+        /// Getter and setter for code
+        /// </summary>
+        public string Code { get { return sCode; } set { sCode = value; } }
+
+
+        /// <summary>
+        /// getter and Setter for Item Desc
+        /// </summary>
+        public string ItemDesc { get { return sItemDesc; } set { sItemDesc = value; } }
+
+        /// <summary>
+        /// getter and setter for Cost
+        /// </summary>
+        public int Cost { get { return sCost; } set { sCost = value; } }
 
         public DataTable getItems()
         {
@@ -36,14 +58,19 @@ namespace GroupProject.Main
             return dataset.Tables[0];
         }
 
-        /*
-        public string getPrice()
+        
+        public string getPrice(string item)
         {
-            int count = 0;
-            var query = sqlClass.getPrice();
-            return sqlClass.ExecuteSQLStatement(query, ref count);
+            var query = sqlClass.getPrice(item);
+            return sqlClass.ExecuteScalarSQL(query);
         }
-        */
+
+        public string getCode(string itemName)
+        {
+            var query = sqlClass.getItemCode(itemName);
+            return sqlClass.ExecuteScalarSQL(query);
+        }
+        
         public DataSet fillTable(string invoiceNum)
         {
             var count = 0;
@@ -57,6 +84,40 @@ namespace GroupProject.Main
             var query = sqlClass.SelectMaxInvoiceNum(invoiceNum);
             return sqlClass.ExecuteScalarSQL(query);
         }
+
+        public string getInvoiceDate(string invoiceNum)
+        {
+            var query = sqlClass.getDate(invoiceNum);
+            return sqlClass.ExecuteScalarSQL(query);
+        }
+
+        public string getInvoiceCost(string invoiceNum)
+        {
+            var query = sqlClass.getTotalCost(invoiceNum);
+            return sqlClass.ExecuteScalarSQL(query);
+        }
+
+        public string insertItem(int invoiceNum, int lineItemNum, string itemCode)
+        {
+            var query = sqlClass.InstertItems(invoiceNum, lineItemNum, itemCode);
+            var result = sqlClass.ExecuteNonQuery(query);
+            return result.ToString();
+        }
+
+        public string updateTotalCost(int totalCost, int invoiceNum)
+        {
+            var query = sqlClass.UpdateInvoiceData(totalCost, invoiceNum);
+            var result = sqlClass.ExecuteNonQuery(query);
+            return result.ToString();
+        }
+
+        public string removeItems(string sItemCode)
+        {
+            var query = sqlClass.DeleteLineItems(sItemCode);
+            var result = sqlClass.ExecuteNonQuery(query);
+            return result.ToString();
+        }
+        
 
         // invoice class
         // item class

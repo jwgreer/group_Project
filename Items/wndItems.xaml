@@ -34,12 +34,13 @@
         <Button x:Name="addItemBtn" Content="Add Item" HorizontalAlignment="Left" Margin="72,247,0,0" VerticalAlignment="Top" Click="addItemBtn_Click"/>
         <Button x:Name="editItemBtn" Content="Edit Item" HorizontalAlignment="Left" Margin="164,247,0,0" VerticalAlignment="Top" Width="69" Click="editItemBtn_Click"/>
         <Button x:Name="deleteItemBtn" Content="Delete Item" HorizontalAlignment="Left" Margin="263,247,0,0" VerticalAlignment="Top" Width="85" Click="deleteItemBtn_Click"/>
-        <DataGrid x:Name="gameDataGrid" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="343,10,10,207"/>
-        <Button x:Name="saveItemBtn" Content="Save Item" HorizontalAlignment="Left" Margin="387,247,0,0" VerticalAlignment="Top" Width="77" Click="saveItemBtn_Click"/>
-        <TextBox x:Name="codeTextBox" HorizontalAlignment="Left" Margin="117,78,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" IsEnabled="False"/>
-        <TextBox x:Name="costTextBox" HorizontalAlignment="Left" Margin="117,124,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" IsEnabled="False"/>
-        <TextBox x:Name="descTextBox" HorizontalAlignment="Left" Margin="117,165,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" IsEnabled="False"/>
+        <DataGrid x:Name="gameDataGrid" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="343,10,10,207" IsReadOnly="True" SelectionChanged="clicked"/>
+        <TextBox x:Name="codeTextBox" HorizontalAlignment="Left" Margin="117,78,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="costTextBox" HorizontalAlignment="Left" Margin="117,124,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="descTextBox" HorizontalAlignment="Left" Margin="117,165,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <Button x:Name="mainReturnBtn" Content="Return to Main" HorizontalAlignment="Left" Margin="524,247,0,0" VerticalAlignment="Top" Width="98" Click="mainReturnBtn_Click"/>
+        <Label x:Name="test" Content="" HorizontalAlignment="Left" Margin="282,344,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lbltest" Content="" HorizontalAlignment="Left" Margin="263,330,0,0" VerticalAlignment="Top"/>
 
 
     </Grid>

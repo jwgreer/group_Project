@@ -26,6 +26,7 @@ namespace GroupProject.Items
         //clsInvoice class
         //list<items>
 
+        
 
         /// create a method that Get all items then return List<clsItem>
         /// create a method for adding an Item(clsItem)- from the folder common
@@ -36,9 +37,9 @@ namespace GroupProject.Items
         /// 
 
          clsMainSQL sqlClass = new clsMainSQL();
+         clsItemsSQL sqlItemClass = new clsItemsSQL();
+         DataTable _dataTable = new DataTable();
 
-
-      
 
         /// <summary>
         /// Connection string to the DB
@@ -64,11 +65,45 @@ namespace GroupProject.Items
         public DataSet fillTable()
         {
             var count = 0;
-            var query = sqlClass.getItems();
+            var query = sqlItemClass.getItemsDesc();
             var dataset = sqlClass.ExecuteSQLStatement(query, ref count);
             return dataset;
         }
 
+        public string insertGame(string itemCode, string itemDesc, int Cost)
+        {
+            var query = sqlItemClass.InsertItemDesc(itemCode, itemDesc, Cost);
+            var result = sqlClass.ExecuteNonQuery(query);
+            return result.ToString();
+        }
+
+        public string DeleteGame(string sItemCode)
+        {
+            var query = sqlItemClass.DeleteItemDesc(sItemCode);
+            var result = sqlClass.ExecuteNonQuery(query);
+            return result.ToString();
+        }
+        public string DeleteLineGame(string sItemCode)
+        {
+            var query = sqlItemClass.DeleteLineItem(sItemCode);
+            var result = sqlClass.ExecuteNonQuery(query);
+            return result.ToString();
+        }
+
+        public string updateGame(string sItemCode, string sItemDesc, int sCost)
+        {
+            var query = sqlItemClass.UpdateItemDesc(sItemCode, sItemDesc, sCost);
+            var result = sqlClass.ExecuteNonQuery(query);
+            return result.ToString();
+        }
+
+        // public string updateGame();
+
+        // public DataTable DataTable
+        //{
+        //    get { return _dataTable; }
+        //    set { SetProperty(ref _dataTable, value); }
+        // }
 
     }
 
