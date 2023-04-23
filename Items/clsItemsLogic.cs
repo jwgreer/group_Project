@@ -51,7 +51,7 @@ namespace GroupProject.Items
             try
             {
                 // Connect to the "mdb" database
-                sConnectionString = @"Provider=Microsoft.Jet.OLEDB.4.0;Data source= " + Directory.GetCurrentDirectory() + "\\Invoice.mdb";
+                sConnectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data source= " + Directory.GetCurrentDirectory() + "\\Invoice.mdb";
                 System.Diagnostics.Debug.WriteLine("test: " + Directory.GetCurrentDirectory());
             }
             catch (Exception ex)

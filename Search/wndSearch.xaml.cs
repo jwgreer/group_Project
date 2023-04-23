@@ -366,7 +366,7 @@ namespace GroupProject.Search
         {
             try
             {
-                this.Close();
+                this.Hide();
             }
             catch (Exception ex)
             {

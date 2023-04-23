@@ -24,6 +24,7 @@ namespace GroupProject.Main
     {
         //test
        // wndSearch seachWindow = new wndSearch();
+       wndSearch1 searchWindow = new wndSearch1();
 
         wndItems itemsWindow = new wndItems();
 
@@ -127,7 +128,8 @@ namespace GroupProject.Main
 
         private void btnSearch_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            //this.Close();
+            searchWindow.ShowDialog();
            //seachWindow.ShowDialog();
             
         }
