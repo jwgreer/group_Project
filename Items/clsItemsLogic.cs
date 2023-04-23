@@ -83,6 +83,12 @@ namespace GroupProject.Items
             var result = sqlClass.ExecuteNonQuery(query);
             return result.ToString();
         }
+        public string DeleteLineGame(string sItemCode)
+        {
+            var query = sqlItemClass.DeleteLineItem(sItemCode);
+            var result = sqlClass.ExecuteNonQuery(query);
+            return result.ToString();
+        }
 
         public string updateGame(string sItemCode, string sItemDesc, int sCost)
         {

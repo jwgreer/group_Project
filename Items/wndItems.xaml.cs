@@ -156,6 +156,7 @@ namespace GroupProject.Items
          var selectedItem = gameDataGrid.SelectedItem;
            if (selectedItem != null)
            {
+            itemLogic.DeleteLineGame(rCode);
             itemLogic.DeleteGame(rCode);
             updateDataGrid();
             }

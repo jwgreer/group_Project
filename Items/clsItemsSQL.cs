@@ -78,6 +78,13 @@ namespace GroupProject.Items
             string sSQL = "Delete FROM ItemDesc WHERE ItemCode = '" + sItemCode + "'";
             return sSQL;
         }
+
+
+        public string DeleteLineItem(string sItemCode)
+        {
+            string sSQL = "Delete FROM LineItems WHERE ItemCode = '" + sItemCode + "'";
+            return sSQL;
+        }
         ///- select ItemCode, ItemDesc, Cost from ItemDesc
         ///- select distinct(InvoiceNum) from LineItems where ItemCode = 'A'
         ///- Update ItemDesc Set ItemDesc = 'abcdef', Cost = 123 where ItemCode = 'A'
