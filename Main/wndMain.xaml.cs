@@ -47,6 +47,10 @@ namespace GroupProject.Main
 
         public int lineItem;
 
+        public int totalInvoiceCost;
+
+        bool invoiceMode;
+
         public wndMain()
         {
             InitializeComponent();
@@ -64,7 +68,30 @@ namespace GroupProject.Main
 
 
 
+        private void loopThroughforTotal()
+        {
+            int count = 0;
+            for (int i = 0; i < dataGrid.Items.Count; i++)
+            {
+                DataGridRow row = (DataGridRow)dataGrid.ItemContainerGenerator.ContainerFromIndex(i);
+                if (row != null)
+                {
+                    DataGridCell cell = dataGrid.Columns[2].GetCellContent(row).Parent as DataGridCell;
+                    if (cell != null && cell.Content is TextBlock)
+                    {
+                        string value = (cell.Content as TextBlock).Text;
+                        int number;
+                        if (int.TryParse(value, out number))
+                        {
+                            count += number;
+                        }
+                    }
+                }
+            }
+            totalInvoiceCost = count;
 
+            MessageBox.Show(count.ToString());
+        }
 
 
 
@@ -117,13 +144,11 @@ namespace GroupProject.Main
                 getCode();
                 itemName = cmbItems.SelectedItem.ToString();
 
-                test1.Content = invoiceNum;
-                test2.Content = lineItem;
-                test3.Content = itemCode;
-
             }
         }
 
+
+     
 
         private void getPrices()
         {
@@ -167,17 +192,21 @@ namespace GroupProject.Main
 
         private void btnEdit_Invoice_Click(object sender, RoutedEventArgs e)
         {
-            btnCreate_Invoice.IsEnabled = false;
-            btnSearch.IsEnabled= false;
-            btnEdit_Items.IsEnabled= false;
-            updateDataGrid();
-            invoiceNumber.Visibility = Visibility.Visible;
-            invoiceDate.Visibility = Visibility.Visible;
-            totalCost.Visibility = Visibility.Visible;
-            getInvoiceDate();
-            getTotalCost();
-            lineItemCounter();
-
+            invoiceMode= true;
+            if (invoiceMode == true)
+            {
+                btnCreate_Invoice.IsEnabled = false;
+                btnSearch.IsEnabled = false;
+                btnEdit_Items.IsEnabled = false;
+                updateDataGrid();
+                invoiceNumber.Visibility = Visibility.Visible;
+                invoiceDate.Visibility = Visibility.Visible;
+                totalCost.Visibility = Visibility.Visible;
+                getInvoiceDate();
+                getTotalCost();
+                lineItemCounter();
+                loopThroughforTotal();
+            }
             
         }
 
@@ -203,14 +232,18 @@ namespace GroupProject.Main
 
         private void btnCreate_Invoice_Click(object sender, RoutedEventArgs e)
         {
-            invoiceNumber.Visibility = Visibility.Visible;
-            invoiceDate.Visibility = Visibility.Visible;
-            invoiceDate.Content = DateTime.Now.ToString("MM/dd/yyyy");
-            invoiceNumber.Content = "TBD";
-            dataGrid.ItemsSource = null;
-            btnEdit_Invoice.IsEnabled = false;
-            btnSearch.IsEnabled = false;
-            btnEdit_Items.IsEnabled = false;
+            invoiceMode = false;
+            if (invoiceMode == false)
+            {
+                invoiceNumber.Visibility = Visibility.Visible;
+                invoiceDate.Visibility = Visibility.Visible;
+                invoiceDate.Content = DateTime.Now.ToString("MM/dd/yyyy");
+                invoiceNumber.Content = "TBD";
+                dataGrid.ItemsSource = null;
+                btnEdit_Invoice.IsEnabled = false;
+                btnSearch.IsEnabled = false;
+                btnEdit_Items.IsEnabled = false;
+            }
         }
 
         private void btnSave_Invoice_Click(object sender, RoutedEventArgs e)
@@ -231,6 +264,8 @@ namespace GroupProject.Main
                 btnSearch.IsEnabled = true;
                 btnEdit_Items.IsEnabled = true;
             }
+
+            var updateCost = mainClass.updateTotalCost(totalInvoiceCost, invoiceNum);
         }
 
         private void btnAdd_Item_Click(object sender, RoutedEventArgs e)
@@ -238,6 +273,21 @@ namespace GroupProject.Main
             insertItem();
             updateDataGrid();
             lineItemCounter();
+            
+        }
+
+        private void clicked(object sender, SelectionChangedEventArgs e)
+        {
+            if (dataGrid.SelectedCells.Count > 0)
+            {
+                // Get the row index of the selected cells
+                int rowIndex = dataGrid.Items.IndexOf(dataGrid.SelectedCells[0].Item);
+                // Get the contents of the cells in the selected row
+                TextBlock textBlock = dataGrid.Columns[0].GetCellContent(dataGrid.Items[rowIndex]) as TextBlock;
+                string value1 = textBlock != null ? textBlock.Text : "";
+                // Display value1 in a message box
+                MessageBox.Show(value1);
+            }
         }
     }
 }
