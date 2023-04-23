@@ -153,7 +153,7 @@ namespace GroupProject.Main
                 getPrices();
                 getCode();
                 itemName = cmbItems.SelectedItem.ToString();
-                getHighestLineItem();
+                //getHighestLineItem();
 
             }
         }
@@ -176,8 +176,8 @@ namespace GroupProject.Main
             if (cmbItems.SelectedItem != null)
             {
                 var passIn = cmbItems.SelectedItem.ToString();
-                //itemCodeLabel.Content = mainClass.getCode(passIn);
-               // itemCode = itemCodeLabel.Content.ToString();
+                itemCodeLabel.Content = mainClass.getCode(passIn);
+                itemCode = itemCodeLabel.Content.ToString();
             }
         }
         
@@ -280,11 +280,13 @@ namespace GroupProject.Main
 
         private void btnAdd_Item_Click(object sender, RoutedEventArgs e)
         {
+            getCode();
             insertItem();
             updateDataGrid();
             getTotalRowCount();
 
             loopThroughforTotal();
+            getHighestLineItem();
 
 
         }
@@ -370,15 +372,23 @@ namespace GroupProject.Main
         }
 
 
-
+        
         private void getHighestLineItem()
         {
-            var highestLineItem = mainClass.getHighestLineItem(invoiceNum);
-            //MessageBox.Show($"The highest line item number for invoice {invoiceNum} is {highestLineItem}.");
+            if (dataGrid.SelectedItem != null)
+            {
+                var highestLineItem = mainClass.getHighestLineItem(invoiceNum);
+                //MessageBox.Show($"The highest line item number for invoice {invoiceNum} is {highestLineItem}.");
 
-            lineItem = int.Parse(highestLineItem);
-            lineItem++;
-            MessageBox.Show($"The highest line item number for invoice {invoiceNum} is {lineItem}.");
+                lineItem = int.Parse(highestLineItem);
+                lineItem++;
+                MessageBox.Show($"The highest line item number for invoice {invoiceNum} is {lineItem}.");
+            }
+            else
+            {
+                lineItem = 1;
+            }
         }
+        
     }
 }
