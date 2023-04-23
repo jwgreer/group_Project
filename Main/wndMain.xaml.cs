@@ -283,7 +283,10 @@ namespace GroupProject.Main
             insertItem();
             updateDataGrid();
             getTotalRowCount();
+
             loopThroughforTotal();
+
+
         }
 
         private void getSelectedRow()
