@@ -40,6 +40,8 @@
         <TextBox x:Name="costTextBox" HorizontalAlignment="Left" Margin="117,124,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="descTextBox" HorizontalAlignment="Left" Margin="117,165,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <Button x:Name="mainReturnBtn" Content="Return to Main" HorizontalAlignment="Left" Margin="524,247,0,0" VerticalAlignment="Top" Width="98" Click="mainReturnBtn_Click"/>
+        <Label x:Name="test" Content="" HorizontalAlignment="Left" Margin="282,344,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lbltest" Content="Label" HorizontalAlignment="Left" Margin="263,330,0,0" VerticalAlignment="Top"/>
 
 
     </Grid>

@@ -77,6 +77,12 @@ namespace GroupProject.Items
             return result.ToString();
         }
 
+        public string DeleteGame(string itemCode, string itemDesc, int Cost)
+        {
+            var query = sqlItemClass.InsertItemDesc(itemCode, itemDesc, Cost);
+            var result = sqlClass.ExecuteNonQuery(query);
+            return result.ToString();
+        }
 
 
         // public DataTable DataTable

@@ -139,14 +139,21 @@ namespace GroupProject.Items
         /// <param name="e"></param>
         private void deleteItemBtn_Click(object sender, RoutedEventArgs e)
         {
+
+
+
             var selectedItem = gameDataGrid.SelectedItem;
-            if (selectedItem != null)
-            {
+            
+            lbltest.Content = selectedItem.ToString();
+           if (selectedItem != null)
+           {
+                        
                 gameDataGrid.Items.Remove(selectedItem);
-                updateDataGrid();
-            }
-          
-        }
+               updateDataGrid();
+           }
+        // MessageBox.Show(selectedItem);
+}
+
       
 
         /// <summary>
