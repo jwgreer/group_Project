@@ -135,6 +135,9 @@ namespace GroupProject.Items
             {
                 MessageBox.Show("Please fill in the data to enter.");
             }
+            codeTextBox.Clear();
+            costTextBox.Clear();
+            descTextBox.Clear();
         }
         private void insertItem()
         {

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -47,54 +48,118 @@ namespace GroupProject.Items
         public string sConnectionString;
         public clsItemsLogic()
         {
-            // Connect to the "mdb" database
-            sConnectionString = @"Provider=Microsoft.Jet.OLEDB.4.0;Data source= " + Directory.GetCurrentDirectory() + "\\Invoice.mdb";
-            System.Diagnostics.Debug.WriteLine("test: " + Directory.GetCurrentDirectory());
-
+            try
+            {
+                // Connect to the "mdb" database
+                sConnectionString = @"Provider=Microsoft.Jet.OLEDB.4.0;Data source= " + Directory.GetCurrentDirectory() + "\\Invoice.mdb";
+                System.Diagnostics.Debug.WriteLine("test: " + Directory.GetCurrentDirectory());
+            }
+            catch (Exception ex)
+            {
+                //error handling
+                throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + " " +
+                    MethodInfo.GetCurrentMethod().Name + " ->" + ex.Message);
+            }
         }
         public DataTable getItems()
         {
-            int count = 0;
-            clsMainSQL clsData = new clsMainSQL();
-            var query = sqlClass.getItems();
-            var dataset = clsData.ExecuteSQLStatement(query, ref count);
-            return dataset.Tables[0];
+            try
+            {
+
+
+                int count = 0;
+                clsMainSQL clsData = new clsMainSQL();
+                var query = sqlClass.getItems();
+                var dataset = clsData.ExecuteSQLStatement(query, ref count);
+                return dataset.Tables[0];
+            }
+            catch (Exception ex)
+            {
+                //error handling
+                throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + " " +
+                    MethodInfo.GetCurrentMethod().Name + " ->" + ex.Message);
+            }
         }
 
 
         public DataSet fillTable()
         {
-            var count = 0;
-            var query = sqlItemClass.getItemsDesc();
-            var dataset = sqlClass.ExecuteSQLStatement(query, ref count);
-            return dataset;
+            try
+            {
+                var count = 0;
+                var query = sqlItemClass.getItemsDesc();
+                var dataset = sqlClass.ExecuteSQLStatement(query, ref count);
+                return dataset;
+            }
+            catch (Exception ex)
+            {
+                //error handling
+                throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + " " +
+                    MethodInfo.GetCurrentMethod().Name + " ->" + ex.Message);
+            }
         }
 
         public string insertGame(string itemCode, string itemDesc, int Cost)
         {
-            var query = sqlItemClass.InsertItemDesc(itemCode, itemDesc, Cost);
-            var result = sqlClass.ExecuteNonQuery(query);
-            return result.ToString();
+            try
+            {
+                var query = sqlItemClass.InsertItemDesc(itemCode, itemDesc, Cost);
+                var result = sqlClass.ExecuteNonQuery(query);
+                return result.ToString();
+            }
+            catch (Exception ex)
+            {
+                //error handling
+                throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + " " +
+                    MethodInfo.GetCurrentMethod().Name + " ->" + ex.Message);
+            }
         }
 
         public string DeleteGame(string sItemCode)
         {
-            var query = sqlItemClass.DeleteItemDesc(sItemCode);
-            var result = sqlClass.ExecuteNonQuery(query);
-            return result.ToString();
+            try
+            {
+                var query = sqlItemClass.DeleteItemDesc(sItemCode);
+                var result = sqlClass.ExecuteNonQuery(query);
+                return result.ToString();
+            }
+            catch (Exception ex)
+            {
+                //error handling
+                throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + " " +
+                    MethodInfo.GetCurrentMethod().Name + " ->" + ex.Message);
+            }
         }
         public string DeleteLineGame(string sItemCode)
         {
-            var query = sqlItemClass.DeleteLineItem(sItemCode);
-            var result = sqlClass.ExecuteNonQuery(query);
-            return result.ToString();
+            try
+            {
+                var query = sqlItemClass.DeleteLineItem(sItemCode);
+                var result = sqlClass.ExecuteNonQuery(query);
+                return result.ToString();
+            }
+            catch (Exception ex)
+            {
+                //error handling
+                throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + " " +
+                    MethodInfo.GetCurrentMethod().Name + " ->" + ex.Message);
+            }
         }
 
         public string updateGame(string sItemCode, string sItemDesc, int sCost)
         {
-            var query = sqlItemClass.UpdateItemDesc(sItemCode, sItemDesc, sCost);
-            var result = sqlClass.ExecuteNonQuery(query);
-            return result.ToString();
+            try
+            {
+                var query = sqlItemClass.UpdateItemDesc(sItemCode, sItemDesc, sCost);
+                var result = sqlClass.ExecuteNonQuery(query);
+                return result.ToString();
+            }
+            catch (Exception ex)
+            {
+                //error handling
+                throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + " " +
+                    MethodInfo.GetCurrentMethod().Name + " ->" + ex.Message);
+            }
         }
 
         // public string updateGame();
