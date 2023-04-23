@@ -250,9 +250,10 @@ namespace GroupProject.Main
                 invoiceNumber.Visibility = Visibility.Visible;
                 invoiceDate.Visibility = Visibility.Visible;
                 invoiceDate.Content = DateTime.Now.ToString("MM/dd/yyyy");
-                invoiceNumber.Content = "TBD";
+                invoiceNumber.Content = "TBH";
                 dataGrid.ItemsSource = null;
                 mainClass.createInvoice(today.ToString(), totalcost);
+                loadLatestInvoiceNum();
                 disableButtons();
             }
         }
