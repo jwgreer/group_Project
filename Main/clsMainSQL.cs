@@ -288,6 +288,10 @@ namespace GroupProject.Main
             return sSQL;
         }
 
-        
+        public string getHighestLineItem(int invoiceNum)
+        {
+            string sSQL = "SELECT MAX(LineItemNum) AS HighestLineItemNum FROM LineItems WHERE InvoiceNum =" + invoiceNum;
+            return sSQL;
+        }
     }
 }

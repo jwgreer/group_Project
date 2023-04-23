@@ -153,6 +153,7 @@ namespace GroupProject.Main
                 getPrices();
                 getCode();
                 itemName = cmbItems.SelectedItem.ToString();
+                getHighestLineItem();
 
             }
         }
@@ -175,8 +176,8 @@ namespace GroupProject.Main
             if (cmbItems.SelectedItem != null)
             {
                 var passIn = cmbItems.SelectedItem.ToString();
-                itemCodeLabel.Content = mainClass.getCode(passIn);
-                itemCode = itemCodeLabel.Content.ToString();
+                //itemCodeLabel.Content = mainClass.getCode(passIn);
+               // itemCode = itemCodeLabel.Content.ToString();
             }
         }
         
@@ -201,6 +202,7 @@ namespace GroupProject.Main
                 getTotalCost();
                 getTotalRowCount();
                 loopThroughforTotal();
+                
             }
             
         }
@@ -270,7 +272,7 @@ namespace GroupProject.Main
             totalCost.Visibility = Visibility.Hidden;
             dataGrid.ItemsSource = null;
             enableButtons();
-            
+            loopThroughforTotal();
 
             var updateCost = mainClass.updateTotalCost(totalInvoiceCost, invoiceNum);
             
@@ -319,31 +321,37 @@ namespace GroupProject.Main
             }
 
             int rowCount = dataGrid.Items.Count; // get total row count
-            lineItem = rowCount;
-            MessageBox.Show("Total row count is " + lineItem);
+            //lineItem = rowCount;
+            //MessageBox.Show("Total row count is " + lineItem);
         }
 
         private void clicked(object sender, SelectionChangedEventArgs e)
         {
-            if (dataGrid.SelectedCells.Count >= 0)
+            if (dataGrid.SelectedItem != null)
             {
-                // Get the row index of the selected cells
-                int rowIndex = dataGrid.Items.IndexOf(dataGrid.SelectedCells[0].Item);
-                // Get the contents of the cells in the selected row
-                TextBlock textBlock = dataGrid.Columns[0].GetCellContent(dataGrid.Items[rowIndex]) as TextBlock;
-                string value1 = textBlock != null ? textBlock.Text : "";
-                // Display value1 in a message box
-                itemCode= value1;
-                //if (int.TryParse(value1, out testitems))
-                //{
-                //    MessageBox.Show(testitems.ToString());
-                //}
+                if (dataGrid.SelectedCells.Count >= 0)
+                {
+                    // Get the row index of the selected cells
+                    int rowIndex = dataGrid.Items.IndexOf(dataGrid.SelectedCells[0].Item);
+                    // Get the contents of the cells in the selected row
+                    TextBlock textBlock = dataGrid.Columns[0].GetCellContent(dataGrid.Items[rowIndex]) as TextBlock;
+                    string value1 = textBlock != null ? textBlock.Text : "";
+                    // Display value1 in a message box
+                    itemCode = value1;
+                    //if (int.TryParse(value1, out testitems))
+                    //{
+                    //    MessageBox.Show(testitems.ToString());
+                    //}
+                }
+
+                getSelectedRow();
             }
 
-            getSelectedRow();
-
             getTotalRowCount();
-            
+
+            getHighestLineItem();
+
+
 
 
         }
@@ -356,6 +364,18 @@ namespace GroupProject.Main
                 mainClass.removeItems(itemCode);
                 updateDataGrid();
             }
+        }
+
+
+
+        private void getHighestLineItem()
+        {
+            var highestLineItem = mainClass.getHighestLineItem(invoiceNum);
+            //MessageBox.Show($"The highest line item number for invoice {invoiceNum} is {highestLineItem}.");
+
+            lineItem = int.Parse(highestLineItem);
+            lineItem++;
+            MessageBox.Show($"The highest line item number for invoice {invoiceNum} is {lineItem}.");
         }
     }
 }
