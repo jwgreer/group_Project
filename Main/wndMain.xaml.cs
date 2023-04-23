@@ -94,6 +94,7 @@ namespace GroupProject.Main
                     }
                 }
             }
+            totalCost.Content = count;
             totalInvoiceCost = count;
 
             MessageBox.Show(count.ToString());
@@ -244,6 +245,7 @@ namespace GroupProject.Main
             invoiceMode = false;
             if (invoiceMode == false)
             {
+                totalCost.Visibility = Visibility.Visible;
                 DateTime today = DateTime.Today;
                 today.ToString();
                 string totalcost = "0";
@@ -254,12 +256,14 @@ namespace GroupProject.Main
                 dataGrid.ItemsSource = null;
                 mainClass.createInvoice(today.ToString(), totalcost);
                 loadLatestInvoiceNum();
+               
                 disableButtons();
             }
         }
 
         private void btnSave_Invoice_Click(object sender, RoutedEventArgs e)
         {
+            loopThroughforTotal();
             loadLatestInvoiceNum();
             invoiceNumber.Visibility = Visibility.Hidden;
             invoiceDate.Visibility = Visibility.Hidden;
@@ -269,6 +273,7 @@ namespace GroupProject.Main
             
 
             var updateCost = mainClass.updateTotalCost(totalInvoiceCost, invoiceNum);
+            
         }
 
         private void btnAdd_Item_Click(object sender, RoutedEventArgs e)
@@ -276,7 +281,7 @@ namespace GroupProject.Main
             insertItem();
             updateDataGrid();
             getTotalRowCount();
-            
+            loopThroughforTotal();
         }
 
         private void getSelectedRow()
