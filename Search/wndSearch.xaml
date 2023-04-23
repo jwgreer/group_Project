@@ -27,20 +27,22 @@
         </Style>
     </Window.Resources>
     <Grid>
-        <DataGrid x:Name="gridInvoices" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="10,25,244,10"/>
+        <DataGrid x:Name="gridInvoices" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="10,25,244,10" SelectionChanged="gridInvoices_SelectionChanged" Loaded="dataGrid_Loaded"/>
         <Button x:Name="btnInvoiceSelect" Content="Select Invoice" HorizontalAlignment="Left" Margin="641,253,0,0" VerticalAlignment="Top" Height="42" Width="122" Click="btnInvoiceSelect_Click"/>
         <Button x:Name="btnInvoiceClear" Content="Clear Selection" HorizontalAlignment="Left" Margin="641,326,0,0" VerticalAlignment="Top" Click="btnInvoiceClear_Click" Width="122"/>
-        <ComboBox x:Name="cbxInvoiceNum" HorizontalAlignment="Left" Margin="648,56,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="ComboBox_SelectionChanged"/>
-        <ComboBox x:Name="cbxInvoiceDate" HorizontalAlignment="Left" Margin="648,114,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cbxInvoiceDate_SelectionChanged"/>
-        <ComboBox x:Name="cbxInvoiceTotal" HorizontalAlignment="Left" Margin="648,172,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cbxInvoiceTotal_SelectionChanged"/>
+        <ComboBox x:Name="cbInvoiceNum" HorizontalAlignment="Left" Margin="648,56,0,0" VerticalAlignment="Top" Width="142" SelectionChanged="ComboBox_SelectionChanged" IsSynchronizedWithCurrentItem="False"/>
+        <ComboBox x:Name="cbInvoiceDate" HorizontalAlignment="Left" Margin="648,114,0,0" VerticalAlignment="Top" Width="142" SelectionChanged="cbxInvoiceDate_SelectionChanged" IsSynchronizedWithCurrentItem="False"/>
+        <ComboBox x:Name="cbInvoiceTotal" HorizontalAlignment="Left" Margin="648,172,0,0" VerticalAlignment="Top" Width="142" SelectionChanged="cbxInvoiceTotal_SelectionChanged" IsSynchronizedWithCurrentItem="False"/>
         <Label x:Name="lblFilterTitle1" Content="Filter Invoices by:" HorizontalAlignment="Left" Margin="657,25,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblFilterTitle2" Content="or" HorizontalAlignment="Left" Margin="697,83,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblInvoiceNum" Content="Invoice # :" HorizontalAlignment="Left" Margin="584,54,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblInvoiceDate" Content="Invoice Date :" HorizontalAlignment="Left" Margin="568,112,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblInvoiceCost" Content="Total Cost :" HorizontalAlignment="Left" Margin="575,170,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblInvoiceNum" Content="Invoice # :" HorizontalAlignment="Left" Margin="578,54,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblInvoiceDate" Content="Invoice Date :" HorizontalAlignment="Left" Margin="561,112,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblInvoiceCost" Content="Total Cost :" HorizontalAlignment="Left" Margin="571,170,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblFilterTitle3" Content="and / or" HorizontalAlignment="Left" Margin="682,141,0,0" VerticalAlignment="Top"/>
         <Button x:Name="btnInvoiceCancel" Content="Cancel Search" HorizontalAlignment="Left" Margin="663,391,0,0" VerticalAlignment="Top" Click="btnInvoiceCancel_Click"/>
         <Label x:Name="lblInvoiceDisplay" Content="Invoices" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblSelectedInvoice" Content="" HorizontalAlignment="Left" Margin="685,222,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblSelection" Content="Selected Invoice:" HorizontalAlignment="Left" Margin="581,222,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

@@ -100,22 +100,30 @@ namespace GroupProject.Search
         /// <summary>
         /// This SQL gets all data on an invoice for a given sInvoiceDate
         /// </summary>
-        /// <param name="sInvoiceDate">The sInvoiceDate for the invoice to retrieve all data.</param>
         /// <returns>All data for the given invoice.</returns>
-        public string SelectDistinctInvoiceDate(string sInvoiceDate)
+        public string SelectDistinctInvoiceNumber()
         {
-            string sSQL = $"SELECT DISTINCT({sInvoiceDate}) From Invoices order by {sInvoiceDate}";
+            string sSQL = "SELECT DISTINCT(InvoiceNum) From Invoices order by InvoiceNum";
+
+            return sSQL;
+        }
+        /// <summary>
+        /// This SQL gets all data on an invoice for a given sInvoiceDate
+        /// </summary>
+        /// <returns>All data for the given invoice.</returns>
+        public string SelectDistinctInvoiceDate()
+        {
+            string sSQL = "SELECT DISTINCT(InvoiceDate) From Invoices order by InvoiceDate";
 
             return sSQL;
         }
         /// <summary>
         /// This SQL gets all data on an invoice for a given sTotalCost
         /// </summary>
-        /// <param name="sTotalCost">The sTotalCost for the invoice to retrieve all data.</param>
         /// <returns>All data for the given invoice.</returns>
-        public string SelectDistinctInvoiceCost(string sTotalCost)
+        public string SelectDistinctInvoiceCost()
         {
-            string sSQL = $"SELECT DISTINCT({sTotalCost}) From Invoices order by {sTotalCost}";
+            string sSQL = $"SELECT DISTINCT(TotalCost) From Invoices order by TotalCost";
 
             return sSQL;
         }
