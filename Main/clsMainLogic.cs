@@ -117,6 +117,13 @@ namespace GroupProject.Main
             var result = sqlClass.ExecuteNonQuery(query);
             return result.ToString();
         }
+
+        public string getHighestLineItem(int invoiceNum)
+        {
+            var query = sqlClass.getHighestLineItem(invoiceNum);
+            var result = sqlClass.ExecuteScalarSQL(query);
+            return result.ToString();
+        }
         
 
         // invoice class
