@@ -26,13 +26,11 @@ namespace GroupProject.Items
     /// </summary>
     public partial class wndItems : Window
     {
-        //wndMain mainWindow = new wndMain();
-
-        // clsItemsLogic clsLogic = new clsItemsLogic();\
-
+       
+        /// <summary>
+        /// creates objects
+        /// </summary>
         clsItemsLogic itemLogic = new clsItemsLogic();
-        
-        //wndItems itemsWindow = new wndItems();
 
         clsMainSQL sqlClass = new clsMainSQL();
 
@@ -42,6 +40,9 @@ namespace GroupProject.Items
 
         public DataTable datatable = new DataTable();
 
+        /// <summary>
+        /// used for storing data to push to SQL
+        /// </summary>
         public string rCode;
         public string rItemDesc;
         public int rCost;
@@ -71,6 +72,9 @@ namespace GroupProject.Items
              }
          }*/
 
+        /// <summary>
+        /// method that updates the grid from the start and when things get updated after delete add or edit
+        /// </summary>
         private void updateDataGrid()
         {
             try
@@ -80,6 +84,7 @@ namespace GroupProject.Items
                     var datSet = itemLogic.fillTable();
                     gameDataGrid.ItemsSource = datSet.Tables[0].DefaultView;
                 }
+                ///clears the boxes
                 codeTextBox.Clear();
                 costTextBox.Clear();
                 descTextBox.Clear();
@@ -128,6 +133,8 @@ namespace GroupProject.Items
 
                     // List<string> game = new List<string>();
                     // DataGrid.Items.Add
+
+                    ///grabs the textbox variables and assigns to variables to push to SQL
                     rCode = codeTextBox.Text;
                     rCost = int.Parse(costTextBox.Text);
                     rItemDesc = descTextBox.Text;
@@ -223,7 +230,11 @@ namespace GroupProject.Items
             }
         }
 
-
+        /// <summary>
+        /// method that checks to see when something is clicked and to grab the variables from the col and rows
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void clicked(object sender, SelectionChangedEventArgs e)
         {
             try
@@ -260,6 +271,12 @@ namespace GroupProject.Items
         {
 
         }
+        /// <summary>
+        /// error handling method
+        /// </summary>
+        /// <param name="sClass"></param>
+        /// <param name="sMethod"></param>
+        /// <param name="sMessage"></param>
         private void HandleError(string sClass, string sMethod, string sMessage)
         {
             try

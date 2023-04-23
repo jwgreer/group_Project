@@ -24,6 +24,7 @@ namespace GroupProject.Search
         /// <returns>All data for the given invoice.</returns>
         public string SelectInvoiceData(string sInvoiceID)
         {
+
             string sSQL = "SELECT * FROM Invoices WHERE InvoiceNum = " + sInvoiceID;
 
             return sSQL;

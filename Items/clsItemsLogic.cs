@@ -37,6 +37,7 @@ namespace GroupProject.Items
         /// already on a invoice. isItemOnInvoice(clsItem)
         /// 
 
+        ///Creates objects
          clsMainSQL sqlClass = new clsMainSQL();
          clsItemsSQL sqlItemClass = new clsItemsSQL();
          DataTable _dataTable = new DataTable();
@@ -61,12 +62,15 @@ namespace GroupProject.Items
                     MethodInfo.GetCurrentMethod().Name + " ->" + ex.Message);
             }
         }
+
+        /// <summary>
+        /// method that gets items from the DPS
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
         public DataTable getItems()
         {
             try
-            {
-
-
                 int count = 0;
                 clsMainSQL clsData = new clsMainSQL();
                 var query = sqlClass.getItems();
@@ -81,7 +85,11 @@ namespace GroupProject.Items
             }
         }
 
-
+        /// <summary>
+        /// method that fills the table
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
         public DataSet fillTable()
         {
             try
@@ -98,7 +106,14 @@ namespace GroupProject.Items
                     MethodInfo.GetCurrentMethod().Name + " ->" + ex.Message);
             }
         }
-
+        /// <summary>
+        /// method that passes ItemCode, itemDesc, Cost to SQL for SQL Statement
+        /// </summary>
+        /// <param name="itemCode"></param>
+        /// <param name="itemDesc"></param>
+        /// <param name="Cost"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
         public string insertGame(string itemCode, string itemDesc, int Cost)
         {
             try
@@ -115,6 +130,12 @@ namespace GroupProject.Items
             }
         }
 
+        /// <summary>
+        /// method that passes Item code to SQL to delete from the database
+        /// </summary>
+        /// <param name="sItemCode"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
         public string DeleteGame(string sItemCode)
         {
             try
@@ -130,6 +151,12 @@ namespace GroupProject.Items
                     MethodInfo.GetCurrentMethod().Name + " ->" + ex.Message);
             }
         }
+        /// <summary>
+        /// deletes the line number so we can delete the game after
+        /// </summary>
+        /// <param name="sItemCode"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
         public string DeleteLineGame(string sItemCode)
         {
             try
@@ -146,6 +173,14 @@ namespace GroupProject.Items
             }
         }
 
+        /// <summary>
+        /// Passses params to update the game from a SQL statement
+        /// </summary>
+        /// <param name="sItemCode"></param>
+        /// <param name="sItemDesc"></param>
+        /// <param name="sCost"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
         public string updateGame(string sItemCode, string sItemDesc, int sCost)
         {
             try
